@@ -5,6 +5,8 @@ using UnityEngine;
 public class InteractionController : MonoBehaviour
 {
     [SerializeField] Camera lootingCamera;
+    [SerializeField] GameObject gui;
+
 
     [SerializeField] private float _interactionDistance = 1f;
 
@@ -15,7 +17,9 @@ public class InteractionController : MonoBehaviour
     public GameObject[] brakeInventory = new GameObject[1];
     
     //public engineScript
-
+	void Start(){
+		gui = GameObject.Find("InventoryHud");
+}
 
     void Update()
     {
@@ -32,6 +36,7 @@ public class InteractionController : MonoBehaviour
                 if (hitInfo.collider.tag == "Wheel")
                 {
                     AddWheel(hitInfo.collider.gameObject);
+					gui.SendMessage("addWheelGUI");
                 }
 
                 if (hitInfo.collider.tag == "Engine")
@@ -42,6 +47,8 @@ public class InteractionController : MonoBehaviour
                     }
 
                     engineInventory[0] = hitInfo.collider.gameObject;
+					gui.SendMessage("addEngineGUI");
+
                 }
 
                 if (hitInfo.collider.tag == "Brake")
@@ -51,6 +58,8 @@ public class InteractionController : MonoBehaviour
                         brakeInventory[0].SendMessage("outFromInventory");
                     }
                     brakeInventory[0] = hitInfo.collider.gameObject;
+					gui.SendMessage("addBrakeGUI");
+
                 }
                 
                 //make the item disappear from the 3D space
