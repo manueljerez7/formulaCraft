@@ -76,13 +76,29 @@ public class InteractionController : MonoBehaviour
             }
         }
                     
-//If there are not free spots, we take out the first item
+//If there are not free spots, we find an item to take out
         if (added == false)
         {
-            //to do: find the equiped wheel with the lowest rarity. we could also implement a PriorityQueue
-            GameObject takenOut = wheelInventory[0];
-            wheelInventory[0] = item;
+            //find the equiped wheel with the lowest rarity. (we could also implement a PriorityQueue)
+            int wheelToRemove = -1;
+            int worstWheelEquippedRarity = 2000; //very high number to start the loop
+            for (int i = 0; i < wheelInventory.Length; i++)
+            {
+                if (wheelInventory[i].GetComponent<Wheel>().rarity < worstWheelEquippedRarity)
+                {
+                    wheelToRemove = i;
+                }
+            }
+
+            //if we didn't find a wheel to replace we simply replace the first one
+            if (wheelToRemove == -1)
+                wheelToRemove = 0;
+            
+            GameObject takenOut = wheelInventory[wheelToRemove];
+            wheelInventory[wheelToRemove] = item;
+
             print(item.name + " added and " + takenOut.name + " discarded");
+            
             takenOut.SendMessage("outFromInventory");
         }
 

@@ -1,9 +1,14 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Engine : CarPart
+public class CarPart : MonoBehaviour
 {
+    //the rarity (aka category, value) of the car part
+    //the higher the better
+    //maybe we'll remove this from the mother class
+    [SerializeField] public uint rarity=0;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -15,7 +20,7 @@ public class Engine : CarPart
     {
         
     }
-    /*public void addedToInventory()
+    public void addedToInventory()
     {
         //it should also stop existing as a phisical object, since its physics are still being calculated.
         //it may not be a problem since we may remove all physics from it (Fortnite style)
@@ -29,5 +34,5 @@ public class Engine : CarPart
     {
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
         mr.enabled = true;
-    }*/
+    }
 }
