@@ -13,6 +13,8 @@ public class InteractionController : MonoBehaviour
     public GameObject[] wheelInventory = new GameObject[4];
     public GameObject[] engineInventory = new GameObject[1];
     public GameObject[] brakeInventory = new GameObject[1];
+    
+    //public engineScript
 
 
     void Update()
@@ -25,6 +27,8 @@ public class InteractionController : MonoBehaviour
             if (hitSomething)
             {
                 print("Hit " + hitInfo.collider.tag);
+                
+                // add the hit item to the inventory
                 if (hitInfo.collider.tag == "Wheel")
                 {
                     AddWheel(hitInfo.collider.gameObject);
@@ -32,13 +36,26 @@ public class InteractionController : MonoBehaviour
 
                 if (hitInfo.collider.tag == "Engine")
                 {
+                    if (engineInventory[0] != null)
+                    {
+                        hitInfo.collider.GetComponent<Engine>().outFromInventory();
+                        //engineInventory[0].SendMessage("outFromInventory");
+                    }
+
                     engineInventory[0] = hitInfo.collider.gameObject;
                 }
 
                 if (hitInfo.collider.tag == "Brake")
                 {
+                    if (brakeInventory[0] != null)
+                    {
+                        brakeInventory[0].SendMessage("outFromInventory");
+                    }
                     brakeInventory[0] = hitInfo.collider.gameObject;
                 }
+                
+                //make the item disappear from the 3D space
+                hitInfo.collider.SendMessage("addedToInventory");
             }
         }
     }

@@ -17,13 +17,15 @@ public class Engine : MonoBehaviour
     }
     public void addedToInventory()
     {
-        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
-        mr.enabled = false;
+        /*MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
+        mr.enabled = false;*/
+        gameObject.SetActive(false);
     }
 
     public void outFromInventory()
     {
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
         mr.enabled = true;
+        //gameObject.SetActive(true);
     }
 }
