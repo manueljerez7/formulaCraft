@@ -38,8 +38,7 @@ public class InteractionController : MonoBehaviour
                 {
                     if (engineInventory[0] != null)
                     {
-                        hitInfo.collider.GetComponent<Engine>().outFromInventory();
-                        //engineInventory[0].SendMessage("outFromInventory");
+                        engineInventory[0].SendMessage("outFromInventory");
                     }
 
                     engineInventory[0] = hitInfo.collider.gameObject;
@@ -62,6 +61,8 @@ public class InteractionController : MonoBehaviour
 
     public void AddWheel(GameObject item)
     {
+        item.SendMessage("addedToInventory");
+        
         bool added = false;
         //We try to find a free spot on the inventory
         for (int i = 0; i < wheelInventory.Length; i++)
@@ -78,9 +79,11 @@ public class InteractionController : MonoBehaviour
 //If there are not free spots, we take out the first item
         if (added == false)
         {
+            //to do: find the equiped wheel with the lowest rarity. we could also implement a PriorityQueue
             GameObject takenOut = wheelInventory[0];
             wheelInventory[0] = item;
             print(item.name + " added and " + takenOut.name + " discarded");
+            takenOut.SendMessage("outFromInventory");
         }
 
     }

@@ -17,15 +17,17 @@ public class Engine : MonoBehaviour
     }
     public void addedToInventory()
     {
-        /*MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
-        mr.enabled = false;*/
-        gameObject.SetActive(false);
+        //it should also stop existing as a phisical object, since its physics are still being calculated.
+        //it may not be a problem since we may remove all physics from it (Fortnite style)
+        //setActive hasn't worked for me because it disappears completely and therefore can't be re-enabled
+        
+        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
+        mr.enabled = false;
     }
 
     public void outFromInventory()
     {
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
         mr.enabled = true;
-        //gameObject.SetActive(true);
     }
 }
