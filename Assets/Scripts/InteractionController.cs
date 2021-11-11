@@ -91,12 +91,19 @@ public class InteractionController : MonoBehaviour
                     wheelToRemove = i;
                 }
             }
-
-            //if we didn't find a wheel to replace we simply replace the first one
-            if (wheelToRemove == -1)
-                wheelToRemove = 0;
-            
-            GameObject takenOut = wheelInventory[wheelToRemove];
+			GameObject takenOut;
+            //if we didn't find a wheel to replace we simply replace the oldest one
+            if (wheelToRemove != -1){
+			takenOut = wheelInventory[wheelToRemove];
+			}
+            else
+			{
+                wheelToRemove = 3;
+            	takenOut = wheelInventory[0];
+				wheelInventory[0]=wheelInventory[1];
+				wheelInventory[1]=wheelInventory[2];
+				wheelInventory[2]=wheelInventory[3];
+			}
             wheelInventory[wheelToRemove] = item;
             item.SendMessage("addedToInventory");
 

@@ -30,15 +30,28 @@ public class CarPart : MonoBehaviour
         
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
         mr.enabled = false;
-        Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
-        sphereCollider.enabled = false;
+        //Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        //sphereCollider.enabled = false;
+		takeToOtherLayer();
     }
 
     public void outFromInventory()
     {
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
         mr.enabled = true;
-        Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
-        sphereCollider.enabled = true;
+        //Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        //sphereCollider.enabled = true;
+		returnToLayer();
     }
+
+	public void takeToOtherLayer()
+	{
+		gameObject.layer = LayerMask.NameToLayer("InteractableDisabled");
+	}
+
+	public void returnToLayer()
+	{
+		gameObject.layer = LayerMask.NameToLayer("Interactable");
+	}
+
 }
