@@ -9,6 +9,7 @@ public class CarPart : MonoBehaviour
     //maybe we'll remove this from the mother class
     [SerializeField] public uint rarity=0;
     
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -29,11 +30,15 @@ public class CarPart : MonoBehaviour
         
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
         mr.enabled = false;
+        Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        sphereCollider.enabled = false;
     }
 
     public void outFromInventory()
     {
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
         mr.enabled = true;
+        Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        sphereCollider.enabled = true;
     }
 }
