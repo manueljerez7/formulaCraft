@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Wheel : MonoBehaviour
+public class Wheel : CarPart
 {
     // Start is called before the first frame update
     void Start()
@@ -14,16 +14,5 @@ public class Wheel : MonoBehaviour
     void Update()
     {
         
-    }
-    public void addedToInventory()
-    {
-        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
-        mr.enabled = false;
-    }
-
-    public void outFromInventory()
-    {
-        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
-        mr.enabled = true;
     }
 }
