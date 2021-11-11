@@ -15,4 +15,10 @@ public class Portal : MonoBehaviour
     {
         
     }
+    
+    public void enableAndShow()
+    {
+        gameObject.GetComponent<MeshRenderer>().enabled = true;
+        gameObject.GetComponent<MeshCollider>().enabled = true;
+    }
 }

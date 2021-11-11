@@ -8,6 +8,7 @@ TagManager:
   - Wheel
   - Brake
   - Fire
+  - Portal
   layers:
   - Default
   - TransparentFX

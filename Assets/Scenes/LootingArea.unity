@@ -210,7 +210,7 @@ MonoBehaviour:
   _interactableLayer:
     serializedVersion: 2
     m_Bits: 64
-  portal: {fileID: 0}
+  portal: {fileID: 2114374692}
   wheelInventory:
   - {fileID: 0}
   - {fileID: 0}
@@ -918,6 +918,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -9123198997303057033, guid: a2d338058f5a10c428a561b70149ce90, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: -6124238313307410711, guid: a2d338058f5a10c428a561b70149ce90, type: 3}
       propertyPath: m_Enabled
       value: 0
@@ -928,6 +932,14 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a8934a77ad83e0f4a9e9d40b3917880b, type: 2}
     - target: {fileID: 2428454400620579189, guid: a2d338058f5a10c428a561b70149ce90, type: 3}
       propertyPath: m_Name
+      value: Portal
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428454400620579189, guid: a2d338058f5a10c428a561b70149ce90, type: 3}
+      propertyPath: m_Layer
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 2428454400620579189, guid: a2d338058f5a10c428a561b70149ce90, type: 3}
+      propertyPath: m_TagString
       value: Portal
       objectReference: {fileID: 0}
     - target: {fileID: 4302095576990042515, guid: a2d338058f5a10c428a561b70149ce90, type: 3}

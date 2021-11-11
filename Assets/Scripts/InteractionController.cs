@@ -63,7 +63,7 @@ public class InteractionController : MonoBehaviour
                 //spawn the portal if the player has all the necessary pieces 
                 if (wheelInventory[3] != null && engineInventory[0] != null && brakeInventory[0] != null)
                 {
-                    //createPortal();
+                    showPortal();
                 }
             }
         }
@@ -122,6 +122,11 @@ public class InteractionController : MonoBehaviour
             takenOut.SendMessage("outFromInventory");
         }
 
+    }
+
+    private void showPortal()
+    {
+        portal.SendMessage("enableAndShow");
     }
 }
 
