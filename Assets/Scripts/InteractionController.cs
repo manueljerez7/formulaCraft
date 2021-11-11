@@ -61,7 +61,6 @@ public class InteractionController : MonoBehaviour
 
     public void AddWheel(GameObject item)
     {
-        item.SendMessage("addedToInventory");
         
         bool added = false;
         //We try to find a free spot on the inventory
@@ -71,6 +70,7 @@ public class InteractionController : MonoBehaviour
             {
                 wheelInventory[i] = item;
                 added = true;
+                item.SendMessage("addedToInventory");
                 print(item.name + " added in a free spot");
                 break;
             }
@@ -81,11 +81,13 @@ public class InteractionController : MonoBehaviour
         {
             //find the equiped wheel with the lowest rarity. (we could also implement a PriorityQueue)
             int wheelToRemove = -1;
-            int worstWheelEquippedRarity = 2000; //very high number to start the loop
+            uint worstWheelEquippedRarity = 2000; //very high number to start the loop
             for (int i = 0; i < wheelInventory.Length; i++)
             {
+                print("wheel's rarity == " + wheelInventory[i].GetComponent<Wheel>().rarity + "\n worstWheelEquippedRarity == " + worstWheelEquippedRarity);
                 if (wheelInventory[i].GetComponent<Wheel>().rarity < worstWheelEquippedRarity)
                 {
+                    worstWheelEquippedRarity = wheelInventory[i].GetComponent<Wheel>().rarity;
                     wheelToRemove = i;
                 }
             }
@@ -96,6 +98,7 @@ public class InteractionController : MonoBehaviour
             
             GameObject takenOut = wheelInventory[wheelToRemove];
             wheelInventory[wheelToRemove] = item;
+            item.SendMessage("addedToInventory");
 
             print(item.name + " added and " + takenOut.name + " discarded");
             
