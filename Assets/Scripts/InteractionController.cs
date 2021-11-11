@@ -9,14 +9,18 @@ public class InteractionController : MonoBehaviour
     [SerializeField] private float _interactionDistance = 1f;
 
     [SerializeField] private LayerMask _interactableLayer;
+    
+    [SerializeField] private GameObject portal;
 
     public GameObject[] wheelInventory = new GameObject[4];
     public GameObject[] engineInventory = new GameObject[1];
     public GameObject[] brakeInventory = new GameObject[1];
     
     //public engineScript
-
-
+    private void Start()
+    {
+        
+    }
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -55,6 +59,12 @@ public class InteractionController : MonoBehaviour
                 
                 //make the item disappear from the 3D space
                 hitInfo.collider.SendMessage("addedToInventory");
+                
+                //spawn the portal if the player has all the necessary pieces 
+                if (wheelInventory[3] != null && engineInventory[0] != null && brakeInventory[0] != null)
+                {
+                    //createPortal();
+                }
             }
         }
     }
