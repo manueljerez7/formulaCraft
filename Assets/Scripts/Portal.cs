@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;  //for the scene change
 
 public class Portal : MonoBehaviour
 {
@@ -15,7 +17,13 @@ public class Portal : MonoBehaviour
     {
         
     }
-    
+
+    void OnTriggerEnter(Collider other)
+    {
+        //change scene to racing area
+        SceneManager.LoadScene(1); //TODO change number 1 for whatever scene number the racing area is
+    }
+
     public void enableAndShow()
     {
         gameObject.GetComponent<MeshRenderer>().enabled = true;
