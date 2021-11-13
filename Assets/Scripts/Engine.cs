@@ -15,7 +15,7 @@ public class Engine : CarPart
     {
         
     }
-    public void addedToInventory()
+   /* public void addedToInventory()
         {
             //it should stop being able to be clicked.
             //it should also stop existing as a physical object, since its physics are still being calculated.
@@ -38,5 +38,5 @@ public class Engine : CarPart
             //boxCollider.enabled = true;
 			returnToLayer();
 
-        }
+        }*/
 }
