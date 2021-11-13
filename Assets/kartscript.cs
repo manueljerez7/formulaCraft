@@ -15,10 +15,21 @@ public class kartscript : MonoBehaviour
     public float timetozero=5f; //Slightly Impacted by brake power, the lower the better
     public float timetostationary = 2f; //Impacted by Brake Power, the lower the better
     public float nitropower = 1.0f ;//Timed Ammount of nitro bonus, not impacted by parts
-    private float acceleration ;
+    private float acceleration;
     private float deceleration ;
     private float brakerate;
     private float rotationAmount;
+
+    private Vector3 pos;
+    private Vector3 forwardDirection;
+    private float gravityForce = 10f;
+    private bool grounded;
+    public LayerMask ground;
+    public float groundRayLength = .5f;
+    public Transform groundRayPoint;
+    public float dragOnGround = 3.0f;
+    // private float accelerationForward = 70.0f;
+
 
     void Start()
     {
@@ -36,14 +47,21 @@ public class kartscript : MonoBehaviour
         if (speed > 0)
         {
             rotationAmount = Input.GetAxis("Horizontal") * grip;
+
+            
         }
         //Inverted steering for reverse
         if (revspeed > 0)
         {
             rotationAmount = -Input.GetAxis("Horizontal") * grip;
+            
         }
         rotationAmount *= Time.deltaTime;
-        kart.transform.Rotate (0.0f, rotationAmount, 0.0f);
+        if (grounded)
+        {
+            // kart.transform.Rotate (0.0f, rotationAmount, 0.0f);
+            kart.transform.rotation = Quaternion.Euler(kart.transform.rotation.eulerAngles + new Vector3(0f, rotationAmount * Input.GetAxis("Vertical"), 0f));
+        }
         //Accelerate
         if (Input.GetKey("up"))
         {
@@ -118,5 +136,33 @@ public class kartscript : MonoBehaviour
             }
         }
         speedometer = Mathf.Max(speed, revspeed);
+    }
+
+    private void FixedUpdate()
+    {
+        grounded = false;
+        RaycastHit hit;
+
+        if (Physics.Raycast(groundRayPoint.position, -transform.up, out hit, groundRayLength, ground))
+        {
+            grounded = true;
+            transform.rotation = Quaternion.FromToRotation(transform.up, hit.normal) * transform.rotation;
+        }
+
+        if (grounded)
+        {
+            kart.drag = dragOnGround;
+
+            if (Mathf.Abs(speed) > 0)
+            {
+                kart.AddForce(transform.forward * speed);
+            }
+        }
+        else
+        {
+            kart.drag = 0.1f;
+            // kart.AddForce(Vector3.up * -gravityForce * 10000f);
+            kart.AddForce(Vector3.up * -gravityForce * 10000f);
+        }
     }
 }
