@@ -6,6 +6,8 @@ using UnityEngine;
 public class InteractionController : MonoBehaviour
 {
     [SerializeField] Camera lootingCamera;
+    [SerializeField] GameObject gui;
+
 
     [SerializeField] private float _interactionDistance = 1f;
 
@@ -19,10 +21,10 @@ public class InteractionController : MonoBehaviour
     public bool inventoryFull = false;
     
     //public engineScript
-    private void Start()
-    {
-        
-    }
+	void Start(){
+		gui = GameObject.Find("InventoryHud");
+}
+
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -32,6 +34,7 @@ public class InteractionController : MonoBehaviour
             bool hitSomething = Physics.Raycast(ray, out hitInfo, _interactionDistance, (int) _interactableLayer);
             if (hitSomething)
             {
+            
                 string objectTag = hitInfo.collider.tag;
                 print("Hit " + objectTag);
 
@@ -42,6 +45,7 @@ public class InteractionController : MonoBehaviour
                     if (objectTag == "Wheel")
                     {
                         AddWheel(hitInfo.collider.gameObject);
+					              gui.SendMessage("addWheelGUI");
                     }
 
                     else if (objectTag == "Engine")
@@ -50,9 +54,10 @@ public class InteractionController : MonoBehaviour
                         {
                             engineInventory[0].SendMessage("outFromInventory");
                         }
-
                         engineInventory[0] = hitInfo.collider.gameObject;
+					              gui.SendMessage("addEngineGUI");
                     }
+
 
                     else if (objectTag == "Brake")
                     {
@@ -62,6 +67,7 @@ public class InteractionController : MonoBehaviour
                         }
 
                         brakeInventory[0] = hitInfo.collider.gameObject;
+					              gui.SendMessage("addBrakeGUI");
                     }
 
                     //make the grabbed item disappear from the 3D space
