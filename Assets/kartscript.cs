@@ -28,7 +28,9 @@ public class kartscript : MonoBehaviour
     public float groundRayLength = .5f;
     public Transform groundRayPoint;
     public float dragOnGround = 3.0f;
-    // private float accelerationForward = 70.0f;
+
+    public Vector3 offset;
+    private Quaternion initialRotation;
 
 
     void Start()
@@ -39,6 +41,7 @@ public class kartscript : MonoBehaviour
         acceleration =  topspeed / timetotop;
         deceleration = -topspeed / timetozero;
         brakerate = -topspeed / timetostationary;
+        initialRotation = kart.transform.rotation;
     }
     void Update()
     {
@@ -57,11 +60,11 @@ public class kartscript : MonoBehaviour
             
         }
         rotationAmount *= Time.deltaTime;
-        if (grounded)
-        {
+        //if (grounded)
+        //{
             // kart.transform.Rotate (0.0f, rotationAmount, 0.0f);
             kart.transform.rotation = Quaternion.Euler(kart.transform.rotation.eulerAngles + new Vector3(0f, rotationAmount * Input.GetAxis("Vertical"), 0f));
-        }
+        //}
         //Accelerate
         if (Input.GetKey("up"))
         {
@@ -135,9 +138,19 @@ public class kartscript : MonoBehaviour
                 nitrocap = Mathf.Max(nitrocap, 0);
             }
         }
+        //Flip car
+        if(Input.GetKey("f"))
+        {
+                if (Mathf.Abs(Vector3.Dot(kart.transform.up, Vector3.down)) >0.0f && speed <= 0.1f)
+                {
+                    kart.transform.position = kart.transform.position + offset;
+                    kart.transform.rotation = initialRotation;
+                }
+        }
         speedometer = Mathf.Max(speed, revspeed);
     }
 
+    
     private void FixedUpdate()
     {
         grounded = false;
@@ -157,11 +170,11 @@ public class kartscript : MonoBehaviour
             {
                 kart.AddForce(transform.forward * speed);
             }
+
         }
         else
         {
             kart.drag = 0.1f;
-            // kart.AddForce(Vector3.up * -gravityForce * 10000f);
             kart.AddForce(Vector3.up * -gravityForce * 10000f);
         }
     }
