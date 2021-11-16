@@ -21,7 +21,7 @@ public class Portal : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         //change scene to racing area
-        SceneManager.LoadScene(1); //TODO change number 1 for whatever scene number the racing area is
+        SceneManager.LoadScene("StubRacingScene"); //TODO change number 1 for whatever scene number the racing area is
     }
 
     public void enableAndShow()
