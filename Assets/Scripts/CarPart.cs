@@ -23,14 +23,10 @@ public abstract class CarPart : MonoBehaviour
     }
     public void addedToInventory()
     {
-        //it should stop being able to be clicked.
-        //it should also stop existing as a physical object, since its physics are still being calculated.
-        //it may not be a problem since we may remove all physics from it (Fortnite style)
-        //setActive hasn't worked for me because it disappears completely and therefore can't be re-enabled
         
         //make it invisible
-        /*MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
-        mr.enabled = false;*/
+        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
+        mr.enabled = false;
         
         //make it intangible
         DisableCollider();
@@ -39,7 +35,8 @@ public abstract class CarPart : MonoBehaviour
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
         rigidbody.isKinematic = true;
         
-        takeToOtherLayer();
+        //if something doesnt work, uncomment this. but pretty sure its unnecessary
+        //takeToOtherLayer();
     }
     public void outFromInventory()
     {
@@ -49,21 +46,15 @@ public abstract class CarPart : MonoBehaviour
         enableCollider();
         Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
         rigidbody.isKinematic = false;
-		returnToLayer();
+        
+        //if something doesnt work, uncomment this. but pretty sure its unnecessary
+		//returnToLayer();
     }
+    
     //extracted because each type of part has a different kind of collider
     public abstract void DisableCollider();
-    //{
-	    /*Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
-	    sphereCollider.enabled = false; */
-    //}
     public abstract void enableCollider();
-    ///{ 
-	    /*Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
-	    sphereCollider.enabled = true;*/
-    //}
-
-
+    
     public void takeToOtherLayer()
 	{
 		gameObject.layer = LayerMask.NameToLayer("InteractableDisabled");
@@ -78,4 +69,6 @@ public abstract class CarPart : MonoBehaviour
 	{
 		rarity = newRarity;
 	}
+
+	public abstract void SetModelByRarity();
 }

@@ -16,8 +16,7 @@ public class Wheel : CarPart
         
     }
     
-    //TODO: repeat in engine and brake
-    private void SetModelByRarity()
+    public override void SetModelByRarity()
     {
         //TODO: set model based on rarity
         switch(rarity) 

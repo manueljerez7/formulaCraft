@@ -15,28 +15,26 @@ public class Brake : CarPart
     {
         
     }
-    
-    /*public void addedToInventory()
+    public override void SetModelByRarity()
     {
-        //it should stop being able to be clicked.
-        //it should also stop existing as a physical object, since its physics are still being calculated.
-        //it may not be a problem since we may remove all physics from it (Fortnite style)
-        //setActive hasn't worked for me because it disappears completely and therefore can't be re-enabled
-        
-        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
-        mr.enabled = false;
-        //
-        takeToOtherLayer();
+        //TODO: set model based on rarity
+        switch(rarity) 
+        {
+            case 0:
+                // most common rarity
+                break;
+            case 1:
+                // mid rarity
+                break;
+            case 2:
+                //rarest rarity
+                break;
+            default:
+                // code block
+                break;
+        }
     }
-        
-    public void outFromInventory()
-    {
-        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
-        mr.enabled = true;
-        
-        returnToLayer();
-    }*/
-    
+
     public override void DisableCollider()
     {
         Collider boxCollider = gameObject.GetComponent<CapsuleCollider>();
