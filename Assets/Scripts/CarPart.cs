@@ -2,12 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class CarPart : MonoBehaviour
+public abstract class CarPart : MonoBehaviour
 {
     //the rarity (aka category, value) of the car part
     //the higher the better
     //maybe we'll remove this from the mother class
-    [SerializeField] public uint rarity=0;
+    [SerializeField] public uint rarity = 0;
     
     
     // Start is called before the first frame update
@@ -28,23 +28,43 @@ public class CarPart : MonoBehaviour
         //it may not be a problem since we may remove all physics from it (Fortnite style)
         //setActive hasn't worked for me because it disappears completely and therefore can't be re-enabled
         
-        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
-        mr.enabled = false;
-        //Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
-        //sphereCollider.enabled = false;
-		takeToOtherLayer();
+        //make it invisible
+        /*MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
+        mr.enabled = false;*/
+        
+        //make it intangible
+        DisableCollider();
+        
+        //freeze it so it doesn't fall into the void basically
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        rigidbody.isKinematic = true;
+        
+        takeToOtherLayer();
     }
-
     public void outFromInventory()
     {
+	    //undo everything from addedToInventory()
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
         mr.enabled = true;
-        //Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
-        //sphereCollider.enabled = true;
+        enableCollider();
+        Rigidbody rigidbody = gameObject.GetComponent<Rigidbody>();
+        rigidbody.isKinematic = false;
 		returnToLayer();
     }
+    //extracted because each type of part has a different kind of collider
+    public abstract void DisableCollider();
+    //{
+	    /*Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+	    sphereCollider.enabled = false; */
+    //}
+    public abstract void enableCollider();
+    ///{ 
+	    /*Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+	    sphereCollider.enabled = true;*/
+    //}
 
-	public void takeToOtherLayer()
+
+    public void takeToOtherLayer()
 	{
 		gameObject.layer = LayerMask.NameToLayer("InteractableDisabled");
 	}

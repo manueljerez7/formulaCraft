@@ -39,4 +39,14 @@ public class Engine : CarPart
 			returnToLayer();
 
         }*/
+   
+   public override void DisableCollider() {
+       Collider sphereCollider = gameObject.GetComponent<BoxCollider>();
+       sphereCollider.enabled = false;
+   }
+    
+   public override void enableCollider() {
+       Collider sphereCollider = gameObject.GetComponent<BoxCollider>();
+       sphereCollider.enabled = true;
+   }
 }

@@ -36,4 +36,14 @@ public class Wheel : CarPart
                 break;
         }
     }
+    
+    public override void DisableCollider() {
+        Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        sphereCollider.enabled = false;
+    }
+    
+    public override void enableCollider() {
+        Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        sphereCollider.enabled = true;
+    }
 }
