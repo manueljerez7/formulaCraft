@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
 
 public class InteractionController : MonoBehaviour
@@ -11,10 +12,13 @@ public class InteractionController : MonoBehaviour
     [SerializeField] private float _interactionDistance = 1f;
 
     [SerializeField] private LayerMask _interactableLayer;
+    
+    [SerializeField] private GameObject portal;
 
     public GameObject[] wheelInventory = new GameObject[4];
     public GameObject[] engineInventory = new GameObject[1];
     public GameObject[] brakeInventory = new GameObject[1];
+    public bool inventoryFull = false;
     
     //public engineScript
 	void Start(){
@@ -30,40 +34,53 @@ public class InteractionController : MonoBehaviour
             bool hitSomething = Physics.Raycast(ray, out hitInfo, _interactionDistance, (int) _interactableLayer);
             if (hitSomething)
             {
-                print("Hit " + hitInfo.collider.tag);
-                
-                // add the hit item to the inventory
-                if (hitInfo.collider.tag == "Wheel")
-                {
-                    AddWheel(hitInfo.collider.gameObject);
-					gui.SendMessage("addWheelGUI");
-                }
+            
+                string objectTag = hitInfo.collider.tag;
+                print("Hit " + objectTag);
 
-                if (hitInfo.collider.tag == "Engine")
+                if (objectTag == "Wheel" || objectTag == "Engine" || objectTag == "Brake") //if we hit a car part
                 {
-                    if (engineInventory[0] != null)
+
+                    // add the hit item to the inventory
+                    if (objectTag == "Wheel")
                     {
-                        engineInventory[0].SendMessage("outFromInventory");
+                        AddWheel(hitInfo.collider.gameObject);
+					              gui.SendMessage("addWheelGUI");
                     }
 
-                    engineInventory[0] = hitInfo.collider.gameObject;
-					gui.SendMessage("addEngineGUI");
-
-                }
-
-                if (hitInfo.collider.tag == "Brake")
-                {
-                    if (brakeInventory[0] != null)
+                    else if (objectTag == "Engine")
                     {
-                        brakeInventory[0].SendMessage("outFromInventory");
+                        if (engineInventory[0] != null)
+                        {
+                            engineInventory[0].SendMessage("outFromInventory");
+                        }
+                        engineInventory[0] = hitInfo.collider.gameObject;
+					              gui.SendMessage("addEngineGUI");
                     }
-                    brakeInventory[0] = hitInfo.collider.gameObject;
-					gui.SendMessage("addBrakeGUI");
 
+
+                    else if (objectTag == "Brake")
+                    {
+                        if (brakeInventory[0] != null)
+                        {
+                            brakeInventory[0].SendMessage("outFromInventory");
+                        }
+
+                        brakeInventory[0] = hitInfo.collider.gameObject;
+					              gui.SendMessage("addBrakeGUI");
+                    }
+
+                    //make the grabbed item disappear from the 3D space
+                    hitInfo.collider.SendMessage("addedToInventory");
+
+                    //spawn the portal if the player has all the necessary pieces 
+                    if (!inventoryFull && wheelInventory[3] != null && engineInventory[0] != null &&
+                        brakeInventory[0] != null)
+                    {
+                        inventoryFull = true;
+                        showPortal();
+                    }
                 }
-                
-                //make the item disappear from the 3D space
-                hitInfo.collider.SendMessage("addedToInventory");
             }
         }
     }
@@ -121,6 +138,11 @@ public class InteractionController : MonoBehaviour
             takenOut.SendMessage("outFromInventory");
         }
 
+    }
+
+    private void showPortal()
+    {
+        portal.SendMessage("enableAndShow");
     }
 }
 
