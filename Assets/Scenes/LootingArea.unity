@@ -736,6 +736,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brake2
       objectReference: {fileID: 0}
+    - target: {fileID: 5969080325455163847, guid: c713820ed36d18f479c54aa075bf243f, type: 3}
+      propertyPath: distanceToRespawn
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8794253308963811553, guid: c713820ed36d18f479c54aa075bf243f, type: 3}
       propertyPath: m_RootOrder
       value: 11
@@ -1458,6 +1462,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Brake
       objectReference: {fileID: 0}
+    - target: {fileID: 5969080325455163847, guid: c713820ed36d18f479c54aa075bf243f, type: 3}
+      propertyPath: distanceToRespawn
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 8794253308963811553, guid: c713820ed36d18f479c54aa075bf243f, type: 3}
       propertyPath: m_RootOrder
       value: 5
@@ -1671,6 +1679,10 @@ PrefabInstance:
     - target: {fileID: 1271147282809036549, guid: 534434e4e81cf7940b99aeb1de50a3c8, type: 3}
       propertyPath: m_Name
       value: Character
+      objectReference: {fileID: 0}
+    - target: {fileID: 1271147282809036549, guid: 534434e4e81cf7940b99aeb1de50a3c8, type: 3}
+      propertyPath: m_TagString
+      value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 1271147282809389857, guid: 534434e4e81cf7940b99aeb1de50a3c8, type: 3}
       propertyPath: m_RootOrder

@@ -36,7 +36,7 @@ public class Wheel : CarPart
         }
     }
     
-    public override void DisableCollider() {
+    public override void disableCollider() {
         Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
         sphereCollider.enabled = false;
     }

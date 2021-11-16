@@ -35,7 +35,7 @@ public class Engine : CarPart
         }
     }
 
-    public override void DisableCollider() {
+    public override void disableCollider() {
        Collider sphereCollider = gameObject.GetComponent<BoxCollider>();
        sphereCollider.enabled = false;
    }
