@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657844, g: 0.49641222, b: 0.57481694, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657826, g: 0.49641263, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -123,6 +123,67 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &82823569
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_RootOrder
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -3.15
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 8.55
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3054831539876152878, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3247756859167946014, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_Icon
+      value: 
+      objectReference: {fileID: 5132851093641282708, guid: 0000000000000000d000000000000000, type: 0}
+    - target: {fileID: 3247756859167946014, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+      propertyPath: m_Name
+      value: CarPartSpawnPoint
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
 --- !u!1001 &117702438
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -236,6 +297,28 @@ MonoBehaviour:
   numberOfEngines: 0
   numberOfBrakes: 0
   display: {fileID: 1323592780}
+--- !u!1 &192043534 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3247756859167946014, guid: d58740c25f86d1345b0a43df91cab50b, type: 3}
+  m_PrefabInstance: {fileID: 82823569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &192043535
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 192043534}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a780a851ccd2292418c528c7950865b5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rarity: 0
+  partPrefabs:
+  - {fileID: 8372898688431886331, guid: 3d678bb943a1cb543b8c28e6025ce429, type: 3}
+  - {fileID: 3338336289615778184, guid: 01f9fd641838bb842a9cf5e859928d2c, type: 3}
+  - {fileID: 2886182828009427445, guid: c713820ed36d18f479c54aa075bf243f, type: 3}
 --- !u!1 &263450704
 GameObject:
   m_ObjectHideFlags: 0

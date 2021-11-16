@@ -54,4 +54,8 @@ public class CarPart : MonoBehaviour
 		gameObject.layer = LayerMask.NameToLayer("Interactable");
 	}
 
+	public void setRarity(uint newRarity)
+	{
+		rarity = newRarity;
+	}
 }
