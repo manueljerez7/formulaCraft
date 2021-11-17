@@ -9,13 +9,21 @@ public class CarPartSpawnPoint : MonoBehaviour
     [FormerlySerializedAs("rarity")] [SerializeField] uint spawnPointRarity;
 
     public GameObject[] partPrefabs;
+    
     // Start is called before the first frame update
     void Start()
     {
-        //instantiates a carPart of random type
-        int random_part_num = Random.Range(0, 3);
-        print("random_part_num = " + random_part_num);
-        GameObject carPart = Instantiate(partPrefabs[random_part_num], transform.position, Quaternion.identity);
+        
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+        
+    }
+    public void SpawnPart(int partNum)
+    {
+        GameObject carPart = Instantiate(partPrefabs[partNum], transform.position, Quaternion.identity);
         
         //choose the rarity of the part, randomly chosen between 0 and 1 or between 1 and 2 depending on the rarity of the spawn point
         //based on a 30%-70% chance
@@ -27,11 +35,5 @@ public class CarPartSpawnPoint : MonoBehaviour
             partRarity = spawnPointRarity + 1;
         
         carPart.SendMessage("setRarity", partRarity);
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
     }
 }
