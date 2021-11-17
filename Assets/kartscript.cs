@@ -43,6 +43,32 @@ public class kartscript : MonoBehaviour
         brakerate = -topspeed / timetostationary;
         initialRotation = kart.transform.rotation;
     }
+    
+    void OnCollisionStay(Collision collision)
+    {
+        print(collision.gameObject.name);
+        if (collision.gameObject.name == "Cube")
+        {
+            if (speed > 0)
+            {
+                speed += brakerate * Time.deltaTime;
+                speed = Mathf.Max(speed, 10);
+                kart.velocity = transform.forward * speed;
+            }
+            else
+            {
+                revspeed += brakerate * Time.deltaTime;
+                revspeed = Mathf.Max(revspeed, 10);
+                kart.velocity = -transform.forward * revspeed;
+            }
+
+        }
+        if (collision.gameObject.name == "Cubeline")
+        {   
+
+        }
+        
+    }
     void Update()
     {
         //Steering and grip level
@@ -51,7 +77,6 @@ public class kartscript : MonoBehaviour
         {
             rotationAmount = Input.GetAxis("Horizontal") * grip;
 
-            
         }
         //Inverted steering for reverse
         if (revspeed > 0)
@@ -62,8 +87,8 @@ public class kartscript : MonoBehaviour
         rotationAmount *= Time.deltaTime;
         //if (grounded)
         //{
-            // kart.transform.Rotate (0.0f, rotationAmount, 0.0f);
-            kart.transform.rotation = Quaternion.Euler(kart.transform.rotation.eulerAngles + new Vector3(0f, rotationAmount * Input.GetAxis("Vertical"), 0f));
+             kart.transform.Rotate (0.0f, rotationAmount, 0.0f);
+            //kart.transform.rotation = Quaternion.Euler(kart.transform.rotation.eulerAngles + new Vector3(0f, rotationAmount * Input.GetAxis("Vertical"), 0f));
         //}
         //Accelerate
         if (Input.GetKey("up"))
