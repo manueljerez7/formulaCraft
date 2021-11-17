@@ -46,7 +46,6 @@ public class kartscript : MonoBehaviour
     
     void OnCollisionStay(Collision collision)
     {
-        print(collision.gameObject.name);
         if (collision.gameObject.name == "Cube")
         {
             if (speed > 0)
@@ -63,11 +62,7 @@ public class kartscript : MonoBehaviour
             }
 
         }
-        if (collision.gameObject.name == "Cubeline")
-        {   
 
-        }
-        
     }
     void Update()
     {
