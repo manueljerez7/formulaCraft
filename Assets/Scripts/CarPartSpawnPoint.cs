@@ -8,6 +8,7 @@ public class CarPartSpawnPoint : MonoBehaviour
     //rarity of the spawn point. Must be either 0 or 1.
     [FormerlySerializedAs("rarity")] [SerializeField] uint spawnPointRarity;
 
+    [Header("ATTENTION: Wheel must be Element 0")]
     public GameObject[] partPrefabs;
     
     // Start is called before the first frame update
