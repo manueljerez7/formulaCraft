@@ -6,53 +6,57 @@ using UnityEngine;
 public class CarPartSpawnManager : MonoBehaviour
 {
     [SerializeField] public CarPartSpawnPoint[] spawnPoints;
-    private HashSet<int> unusedSpawnPoints = new HashSet<int>();
-    
+    private List<int> unusedSpawnPoints2 = new List<int>();
+
     // Start is called before the first frame update
     void Start()
     {
-        //fill the set
+        //fill the list
         for (int i = 0; i < spawnPoints.Length; i++)
         {
-            unusedSpawnPoints.Add(i);
+            unusedSpawnPoints2.Add(i);
         }
-        
-        print("unusedSpawnPoints = "+unusedSpawnPoints);
 
-        int chosenPointNum;
+        print("unusedSpawnPoints = "+unusedSpawnPoints2.ToString());
+
+        int chosenPointIndex;
         int chosenPoint;
         
         //spawn 4 wheels
         for (int i = 0; i < 4; i++)
         {
             //choose a random spawn point among the unused
-            chosenPoint = Random.Range(0, unusedSpawnPoints.Count);
-            //chosenPoint = unusedSpawnPoints
-            spawnPoints[chosenPoint].SendMessage("SpawnPart", 1, SendMessageOptions.RequireReceiver);
-            unusedSpawnPoints.Remove(chosenPoint);
+            chosenPointIndex = Random.Range(0, unusedSpawnPoints2.Count);
+            chosenPoint = unusedSpawnPoints2[chosenPointIndex];
+            spawnPoints[chosenPoint].SendMessage("SpawnPart", 0, SendMessageOptions.RequireReceiver);
+            //unusedSpawnPoints2.Remove(chosenPoint);
+            unusedSpawnPoints2.RemoveAt(chosenPointIndex);
             print("spawned type0 on spawn "+chosenPoint);
         }
-        print("after wheels, unusedSpawnPoints = "+unusedSpawnPoints);
+        print("after wheels, unusedSpawnPoints = "+unusedSpawnPoints2.ToString());
         
         //spawn engine
-        chosenPoint = Random.Range(0, unusedSpawnPoints.Count);
+        chosenPointIndex = Random.Range(0, unusedSpawnPoints2.Count);
+        chosenPoint = unusedSpawnPoints2[chosenPointIndex];
         spawnPoints[chosenPoint].SendMessage("SpawnPart", 1);
-        unusedSpawnPoints.Remove(chosenPoint);
+        unusedSpawnPoints2.RemoveAt(chosenPointIndex);
         print("spawned type1 on spawn "+chosenPoint);
-        print("after engine, unusedSpawnPoints = "+unusedSpawnPoints);
+        print("after engine, unusedSpawnPoints = "+unusedSpawnPoints2.ToString());
         
         //spawn brakes
-        chosenPoint = Random.Range(0, unusedSpawnPoints.Count);
+        chosenPointIndex = Random.Range(0, unusedSpawnPoints2.Count);
+        chosenPoint = unusedSpawnPoints2[chosenPointIndex];
         spawnPoints[chosenPoint].SendMessage("SpawnPart", 2);
-        unusedSpawnPoints.Remove(chosenPoint);
+        unusedSpawnPoints2.RemoveAt(chosenPointIndex);
         print("spawned type2 on spawn "+chosenPoint);
-        print("after brakes, unusedSpawnPoints = "+unusedSpawnPoints);
+        print("after brakes, unusedSpawnPoints = "+unusedSpawnPoints2.ToString());
         
         //spawn a random part on every other point
-        foreach (var pointNum in unusedSpawnPoints)
+        foreach (var pointNum in unusedSpawnPoints2)
         {
             int randomPartNum = Random.Range(0, 3);
             spawnPoints[pointNum].SendMessage("SpawnPart", randomPartNum);
+            print("we visit spawnPoint " + pointNum + " on the final loop");
         }
     }
 
