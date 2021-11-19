@@ -15,4 +15,34 @@ public class Wheel : CarPart
     {
         
     }
+    
+    public override void SetModelByRarity()
+    {
+        //TODO: set model based on rarity
+        switch(rarity) 
+        {
+            case 0:
+                // most common rarity
+                break;
+            case 1:
+                // mid rarity
+                break;
+            case 2:
+                //rarest rarity
+                break;
+            default:
+                // code block
+                break;
+        }
+    }
+    
+    public override void disableCollider() {
+        Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        sphereCollider.enabled = false;
+    }
+    
+    public override void enableCollider() {
+        Collider sphereCollider = gameObject.GetComponent<SphereCollider>();
+        sphereCollider.enabled = true;
+    }
 }
