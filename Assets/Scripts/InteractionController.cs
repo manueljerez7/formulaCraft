@@ -107,7 +107,7 @@ public class InteractionController : MonoBehaviour
         {
             //find the equiped wheel with the lowest rarity. (we could also implement a PriorityQueue)
             int wheelToRemove = -1;
-            uint worstWheelEquippedRarity = 2000; //very high number to start the loop
+            int worstWheelEquippedRarity = 2000; //very high number to start the loop
             for (int i = 0; i < wheelInventory.Length; i++)
             {
                 print("wheel's rarity == " + wheelInventory[i].GetComponent<Wheel>().rarity + "\n worstWheelEquippedRarity == " + worstWheelEquippedRarity);
@@ -144,5 +144,25 @@ public class InteractionController : MonoBehaviour
     {
         portal.SendMessage("enableAndShow");
     }
+
+	public void GenerateValues()
+	{
+		float avg_wheel_rarity = (wheelInventory[0].GetComponent<Wheel>().rarity+
+									wheelInventory[1].GetComponent<Wheel>().rarity+
+									wheelInventory[2].GetComponent<Wheel>().rarity+
+									wheelInventory[3].GetComponent<Wheel>().rarity)/4;
+		float grip = 50.0f+((avg_wheel_rarity)/2.0f)*60.0f;
+		float topSpeed = 110.0f + (engineInventory[0].GetComponent<Engine>().rarity)*30.0f;
+		float timeToMaxSpeed = 9 - (engineInventory[0].GetComponent<Engine>().rarity)*1.5f;
+		float timeToZero = 6 - (brakeInventory[0].GetComponent<Brake>().rarity)*0.5f;
+		float timeToStationary = 3 - (brakeInventory[0].GetComponent<Brake>().rarity)*0.5f;
+    	PlayerPrefs.SetFloat("grip", grip);
+    	PlayerPrefs.SetFloat("topSpeed", topSpeed);
+		PlayerPrefs.SetFloat("timeToMaxSpeed",timeToMaxSpeed);
+		PlayerPrefs.SetFloat("timeToZero",timeToZero);
+		PlayerPrefs.SetFloat("timeToStationary",timeToStationary);
+		print("Parameters generated");
+		
+	}
 }
 

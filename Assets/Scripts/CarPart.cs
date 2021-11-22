@@ -8,7 +8,7 @@ public abstract class CarPart : MonoBehaviour
     //the rarity (aka category, value) of the car part
     //the higher the better
     //maybe we'll remove this from the mother class
-    [SerializeField] public uint rarity = 0;
+    [SerializeField] public int rarity = 0;
     private GameObject m_Player;
     int distanceToRespawn = 3;
     
@@ -75,7 +75,7 @@ public abstract class CarPart : MonoBehaviour
 		gameObject.layer = LayerMask.NameToLayer("Interactable");
 	}
 
-	public void setRarity(uint newRarity)
+	public void setRarity(int newRarity)
 	{
 		rarity = newRarity;
 	}

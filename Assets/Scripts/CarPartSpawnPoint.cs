@@ -6,7 +6,7 @@ using UnityEngine.Serialization;
 public class CarPartSpawnPoint : MonoBehaviour
 {
     //rarity of the spawn point. Must be either 0 or 1.
-    [FormerlySerializedAs("rarity")] [SerializeField] uint spawnPointRarity;
+    [FormerlySerializedAs("rarity")] [SerializeField] int spawnPointRarity;
 
     [Header("ATTENTION: Wheel must be Element 0")]
     public GameObject[] partPrefabs;
@@ -29,7 +29,7 @@ public class CarPartSpawnPoint : MonoBehaviour
         //choose the rarity of the part, randomly chosen between 0 and 1 or between 1 and 2 depending on the rarity of the spawn point
         //based on a 30%-70% chance
         //(read GDD for more info)
-        uint partRarity;
+        int partRarity;
         if (Random.Range(0, 10) > 2)
             partRarity = spawnPointRarity;
         else

@@ -6,6 +6,8 @@ using UnityEngine.SceneManagement;  //for the scene change
 
 public class Portal : MonoBehaviour
 {
+    [SerializeField] InteractionController controller;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -20,6 +22,8 @@ public class Portal : MonoBehaviour
 
     void OnTriggerEnter(Collider other)
     {
+        //call the function that generates the values of performance of the car
+        controller.SendMessage("GenerateValues");
         //change scene to racing area
         SceneManager.LoadScene("StubRacingScene"); //TODO change number 1 for whatever scene number the racing area is
     }
