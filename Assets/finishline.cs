@@ -60,23 +60,20 @@ void OnCollisionEnter(Collision collision){
 		lastlap[1] = sec;
 		lastlap[2] = msec;
 		lastlapui.text = "Last Lap: " + string.Format("{0:00}:{1:00}:{2:00}",min,sec,msec);
-		
 		if(lastlap[0] < bestlap[0]){
 			bestlap[0]=lastlap[0];
 			bestlap[1]=lastlap[1];
 			bestlap[2]=lastlap[2];
-			bestlapui.text = "Last Lap: " + string.Format("{0:00}:{1:00}:{2:00}",min,sec,msec);
 		}else if(lastlap[1] < bestlap[1]){
 			bestlap[0]=lastlap[0];
 			bestlap[1]=lastlap[1];
 			bestlap[2]=lastlap[2];
-			bestlapui.text = "Last Lap: " + string.Format("{0:00}:{1:00}:{2:00}",min,sec,msec);
-		}else if(lastlap[2] < bestlap[2]){
+		}else if(lastlap[2] < bestlap[2] && lastlap[0] <= bestlap[0] && lastlap[1] <= bestlap[1]){
 			bestlap[0]=lastlap[0];
 			bestlap[1]=lastlap[1];
 			bestlap[2]=lastlap[2];
-			bestlapui.text = "Last Lap: " + string.Format("{0:00}:{1:00}:{2:00}",min,sec,msec);
 		}
+		bestlapui.text = "Best Lap: " + string.Format("{0:00}:{1:00}:{2:00}",bestlap[0],bestlap[1],bestlap[2]);
 		StopWatchReset();
 		checkpointA=0;
 		checkpointB=0;
