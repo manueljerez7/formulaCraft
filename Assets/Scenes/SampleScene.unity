@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657838, g: 0.49641234, b: 0.57481676, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -6874,6 +6874,79 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4300006, guid: 4393f5ec0dabb744599e58c38e553f56, type: 3}
+--- !u!1001 &1942050976
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3111173888773578200, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_Name
+      value: GameAssets
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_RootOrder
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 245.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.12696299
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 178.38
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6981245065853527540, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869476512833201196, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: soundAudioClipArray.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869476512833201196, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: soundAudioClipArray.Array.data[1].sound
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8869476512833201196, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: soundAudioClipArray.Array.data[0].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 21fedba81dfab0a4da860d960074ef71, type: 3}
+    - target: {fileID: 8869476512833201196, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
+      propertyPath: soundAudioClipArray.Array.data[1].audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: 6b50c52a19c27c845a9adc71333d43ed, type: 3}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bc097dd2ba99244ea805052f0135d8f3, type: 3}
 --- !u!1 &1943263204 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 125990, guid: 9234b507bb1d424449c1997fe6847ae0, type: 3}

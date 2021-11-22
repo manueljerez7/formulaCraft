@@ -100,6 +100,8 @@ public class kartscript : MonoBehaviour
                 revspeed = Mathf.Max(revspeed, 0);
                 kart.velocity = -transform.forward * revspeed;
             }
+
+            soundManager.PlaySound(soundManager.Sound.KartAccelerate);
         }
         //Reverse
         if (Input.GetKey("down"))
@@ -132,6 +134,7 @@ public class kartscript : MonoBehaviour
                 revspeed = Mathf.Max(revspeed, 0);
                 kart.velocity = -transform.forward * revspeed;
             }
+            soundManager.PlaySound(soundManager.Sound.KartBreaks);
         }
         //Deceleration
         if (!Input.GetKey("up") && !Input.GetKey("down"))
@@ -148,6 +151,7 @@ public class kartscript : MonoBehaviour
                 revspeed = Mathf.Max(revspeed, 0);
                 kart.velocity = -transform.forward * revspeed;
             }
+            soundManager.PlaySound(soundManager.Sound.KartDecelerate);
         }
         //Nitro Powerup
         if(Input.GetKey("s") && Input.GetKey("up")){
@@ -156,6 +160,7 @@ public class kartscript : MonoBehaviour
                 speed += nitropower;
                 nitrocap -= Time.deltaTime;
                 nitrocap = Mathf.Max(nitrocap, 0);
+                soundManager.PlaySound(soundManager.Sound.KartNitro);
             }
         }
         //Flip car
