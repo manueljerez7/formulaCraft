@@ -80,6 +80,7 @@ public class InteractionController : MonoBehaviour
                         inventoryFull = true;
                         showPortal();
                     }
+                    soundManager.PlaySound(soundManager.Sound.GrabCarPart);   
                 }
             }
         }
