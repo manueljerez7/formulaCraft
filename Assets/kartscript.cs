@@ -42,8 +42,24 @@ public class kartscript : MonoBehaviour
         deceleration = -topspeed / timetozero;
         brakerate = -topspeed / timetostationary;
         initialRotation = kart.transform.rotation;
+        soundManager.PlaySound(soundManager.Sound.KartStartup);
     }
-    
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if(collision.gameObject.tag == "Obstacle")
+        {
+            soundManager.PlaySound(soundManager.Sound.KartHitsObstacle);
+        }
+
+        /*
+        if (collision.gameObject.tag == "Ramp")
+        {
+            soundManager.PlaySound(soundManager.Sound.KartHitsRamp);
+        }
+        */
+    }
+
     void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.name == "Cube")
@@ -139,6 +155,14 @@ public class kartscript : MonoBehaviour
         //Deceleration
         if (!Input.GetKey("up") && !Input.GetKey("down"))
         {
+            if(speed > 0)
+            {
+                soundManager.PlaySound(soundManager.Sound.KartDecelerate);
+            }
+            else
+            {
+                soundManager.PlaySound(soundManager.Sound.KartIdle);
+            }
             if (speed > 0 && revspeed ==0)
             {
                 speed += deceleration * Time.deltaTime;
@@ -151,7 +175,8 @@ public class kartscript : MonoBehaviour
                 revspeed = Mathf.Max(revspeed, 0);
                 kart.velocity = -transform.forward * revspeed;
             }
-            soundManager.PlaySound(soundManager.Sound.KartDecelerate);
+
+            
         }
         //Nitro Powerup
         if(Input.GetKey("s") && Input.GetKey("up")){
@@ -170,7 +195,8 @@ public class kartscript : MonoBehaviour
                 {
                     kart.transform.position = kart.transform.position + offset;
                     kart.transform.rotation = initialRotation;
-                }
+                    soundManager.PlaySound(soundManager.Sound.KartFlip);
+            }
         }
         speedometer = Mathf.Max(speed, revspeed);
     }

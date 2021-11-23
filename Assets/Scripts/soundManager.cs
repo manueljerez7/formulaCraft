@@ -4,7 +4,7 @@ using UnityEngine;
 
 public static class soundManager
 {
-   public enum Sound
+    public enum Sound
     {
         KartAccelerate,
         KartDecelerate,
@@ -14,6 +14,9 @@ public static class soundManager
         KartNitro,
         KartFinishLap,
         KartIdle,
+        PowerUpSound,
+        KartFlip,
+        KartStartup,
     }
 
    private static Dictionary<Sound, float> soundTimerDictionary;
@@ -21,18 +24,18 @@ public static class soundManager
    public static void Initialize()
    {
         soundTimerDictionary = new Dictionary<Sound, float>();
-        soundTimerDictionary[Sound.KartIdle] = 0.0f;
+        soundTimerDictionary[Sound.KartAccelerate] = 0.1f;
    }
 
    
    public static void PlaySound(Sound sound)
-    {
-        if (CanPlaySound(sound))
-        {
+    { 
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            
+            
             audioSource.PlayOneShot(GetAudioClip(sound));
-        }
+            // audioSource.Stop();
 
     }
 
@@ -44,7 +47,7 @@ public static class soundManager
                 if (soundTimerDictionary.ContainsKey(sound))
                 {
                     float lastTimePlayed = soundTimerDictionary[sound];
-                    float kartAccelerateTimerMax = .05f;
+                    float kartAccelerateTimerMax = .001f;
                     if(lastTimePlayed + kartAccelerateTimerMax < Time.time)
                     {
                         soundTimerDictionary[sound] = Time.time;

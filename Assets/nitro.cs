@@ -8,7 +8,8 @@ public class nitro : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        { 
+        {
+            soundManager.PlaySound(soundManager.Sound.PowerUpSound);
             kart.GetComponent<kartscript>().nitrocap += 1.0f;
             Destroy(gameObject);
         }

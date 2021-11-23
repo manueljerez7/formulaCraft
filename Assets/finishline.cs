@@ -56,6 +56,7 @@ void OnCollisionEnter(Collision collision){
 		StopWatchStart();
 	}
 	if (checkpointA== 1 && checkpointB==1 && checkpointC==1){
+		soundManager.PlaySound(soundManager.Sound.KartFinishLap);
 		lastlap[0] = min;
 		lastlap[1] = sec;
 		lastlap[2] = msec;
