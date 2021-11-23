@@ -12,9 +12,9 @@ public class kartscript : MonoBehaviour
     public float nitrocap; //Nitro available to use
     public float grip; //Imapcted by wheels, the higher the better
     public float topspeed; //impacted by engine, the higher the better
-    public float timetotop=7f; //Impacted by engine, the lower the better
-    public float timetozero=5f; //Slightly Impacted by brake power, the lower the better
-    public float timetostationary = 2f; //Impacted by Brake Power, the lower the better
+    public float timetotop; //Impacted by engine, the lower the better
+    public float timetozero; //Slightly Impacted by brake power, the lower the better
+    public float timetostationary; //Impacted by Brake Power, the lower the better
     public float nitropower = 1.0f ;//Timed Ammount of nitro bonus, not impacted by parts
     private float acceleration;
     private float deceleration ;
@@ -35,6 +35,11 @@ public class kartscript : MonoBehaviour
 
     void Start()
     {
+		grip = PlayerPrefs.GetFloat("grip"); //Imapcted by wheels, the higher the better
+    	topspeed = PlayerPrefs.GetFloat("topSpeed"); //impacted by engine, the higher the better
+    	timetotop=PlayerPrefs.GetFloat("timeToMaxSpeed"); //Impacted by engine, the lower the better
+    	timetozero=PlayerPrefs.GetFloat("timeToZero"); //Slightly Impacted by brake power, the lower the better
+    	timetostationary = PlayerPrefs.GetFloat("timeToStationary"); 
         nitrocap = 0.0f;
         speed = 0;
         revspeed = 0;
