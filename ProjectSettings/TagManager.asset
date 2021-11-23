@@ -4,6 +4,8 @@
 TagManager:
   serializedVersion: 2
   tags:
+  - checkpoint
+  - Obstacle
   - Engine
   - Wheel
   - Brake
@@ -13,6 +15,11 @@ TagManager:
   - Default
   - TransparentFX
   - Ignore Raycast
+  - Ground
+  - Water
+  - UI
+  - 
+  - 
   - 
   - Water
   - UI
