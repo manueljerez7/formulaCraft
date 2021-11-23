@@ -6,6 +6,11 @@ TagManager:
   tags:
   - checkpoint
   - Obstacle
+  - Engine
+  - Wheel
+  - Brake
+  - Fire
+  - Portal
   layers:
   - Default
   - TransparentFX
@@ -15,6 +20,11 @@ TagManager:
   - UI
   - 
   - 
+  - 
+  - Water
+  - UI
+  - Interactable
+  - InteractableDisabled
   - 
   - 
   - 
