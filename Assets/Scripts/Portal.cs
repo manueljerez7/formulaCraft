@@ -25,7 +25,7 @@ public class Portal : MonoBehaviour
         //call the function that generates the values of performance of the car
         controller.SendMessage("GenerateValues");
         //change scene to racing area
-        SceneManager.LoadScene("StubRacingScene"); //TODO change number 1 for whatever scene number the racing area is
+        SceneManager.LoadScene("RacingScene"); //TODO change number 1 for whatever scene number the racing area is
     }
 
     public void enableAndShow()
