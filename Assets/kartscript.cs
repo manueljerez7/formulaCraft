@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class kartscript : MonoBehaviour
 {
@@ -19,7 +20,6 @@ public class kartscript : MonoBehaviour
     private float deceleration ;
     private float brakerate;
     private float rotationAmount;
-
     private Vector3 pos;
     private Vector3 forwardDirection;
     private float gravityForce = 10f;
@@ -44,7 +44,6 @@ public class kartscript : MonoBehaviour
         initialRotation = kart.transform.rotation;
         soundManager.PlaySound(soundManager.Sound.KartStartup);
     }
-
     private void OnCollisionEnter(Collision collision)
     {
         if(collision.gameObject.tag == "Obstacle")
@@ -87,7 +86,6 @@ public class kartscript : MonoBehaviour
         if (speed > 0)
         {
             rotationAmount = Input.GetAxis("Horizontal") * grip;
-
         }
         //Inverted steering for reverse
         if (revspeed > 0)
