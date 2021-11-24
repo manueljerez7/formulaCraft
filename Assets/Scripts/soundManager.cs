@@ -17,6 +17,7 @@ public static class soundManager
         PowerUpSound,
         KartFlip,
         KartStartup,
+        GrabCarPart,
     }
 
    private static Dictionary<Sound, float> soundTimerDictionary;
