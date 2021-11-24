@@ -25,6 +25,7 @@ public static class soundManager
    {
         soundTimerDictionary = new Dictionary<Sound, float>();
         soundTimerDictionary[Sound.KartAccelerate] = 0.1f;
+        AudioListener.volume = GameAssets.i.masterVolume;
    }
 
    
@@ -32,11 +33,16 @@ public static class soundManager
     { 
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-            
-            
+
+   
             audioSource.PlayOneShot(GetAudioClip(sound));
             // audioSource.Stop();
 
+    }
+
+    public static void AdjustVolume(float volume)
+    {
+        AudioListener.volume = volume;
     }
 
     private static bool CanPlaySound(Sound sound)

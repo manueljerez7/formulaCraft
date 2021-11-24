@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//game setup
 public class GameSetup : MonoBehaviour
 {
     private void Awake()
