@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
+using UnityEngine.Audio;
 
 public class GameAssets : MonoBehaviour
 {
@@ -18,7 +19,8 @@ public class GameAssets : MonoBehaviour
 
     public SoundAudioClip[] soundAudioClipArray;
 
-    public float masterVolume = 1.0f;
+    // public float masterVolume = 1.0f;
+    public AudioMixer audioMixer;
 
     [System.Serializable]
     public class SoundAudioClip

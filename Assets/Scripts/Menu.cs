@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
+
 public class Menu : MonoBehaviour
 {
 	public string name;
@@ -38,4 +39,23 @@ public class Menu : MonoBehaviour
 	{
     	SceneManager.LoadScene("OptionsMenu");		
 	}
+
+    public void SetMasterVolume(float volume)
+    {
+        print("Volume Master!");
+        GameAssets.i.audioMixer.SetFloat("masterVolume", volume);
+    }
+
+    public void SetMusicVolume(float volume)
+    {
+        print("Volume Music!");
+        GameAssets.i.audioMixer.SetFloat("musicVolume", volume);
+    }
+
+    public void SetSFXVolume(float volume)
+    {
+        print("Volume SFX!");
+        GameAssets.i.audioMixer.SetFloat("sfxOtherVolume", volume);
+        GameAssets.i.audioMixer.SetFloat("sfxCarVolume", volume-10.0f);
+    }
 }
