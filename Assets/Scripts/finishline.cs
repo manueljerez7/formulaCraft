@@ -3,25 +3,43 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
+using System;
 
 public class finishline : MonoBehaviour
 {
 	public Text stopwatch;
 	public Text lastlapui;
 	public Text bestlapui;
+	public Text totaltimeui;
+	public Text lapsui;
+	public Text gamefinished;
+	public CanvasGroup backgamefinished;
 	public float lastlap;
 	public float[] bestlap;
 	public float calcbestlap;
+	public DateTime totaltime;
 	public float time;
+	public string lootingtime;
 	float msec;
 	float sec;
 	float min;
 	public int checkpointA=0;
 	public int checkpointB=0;
 	public int checkpointC=0;
+	public int lapcount;
+	public int maxlaps;
+	public string format = "mm:ss:ff";
+	public string formatspam = @"mm\:ss\:ff";
+	public DateTime loottimeparsed;
 
 void Start(){
 	bestlap = new float[3] {100.0f,100.0f,100.0f};
+	lootingtime = PlayerPrefs.GetString("lootingTime");
+	loottimeparsed = DateTime.ParseExact(lootingtime,format,null);
+	totaltimeui.text = "Total Time: " + loottimeparsed.ToString("mm:ss:ff");
+	lapcount= 1;
+	maxlaps= 5;
+	lapsui.text = "Lap: " + "/" + maxlaps;
 }
 
 public void StopWatchStart()
@@ -36,6 +54,7 @@ public void StopWatchReset()
 {
 	time = 0;
 	stopwatch.text = "Lap Time: 00:00:00";
+	loottimeparsed = totaltime;
 }
 
 IEnumerator StopWatch()
@@ -48,6 +67,8 @@ IEnumerator StopWatch()
 		min = (int)(time / 60 % 60);
 
 		stopwatch.text = string.Format("Lap Time: {0:00}:{1:00}:{2:00}",min,sec,msec);
+		totaltime = loottimeparsed + TimeSpan.ParseExact(string.Format("{0:00}:{1:00}:{2:00}",min,sec,msec),formatspam,null);
+		totaltimeui.text = "Total Time: " + totaltime.ToString("mm:ss:ff");
 		yield return null;
 	}
 }
@@ -82,15 +103,24 @@ void OnCollisionEnter(Collision collision){
 			bestlap[2]=msec;
 			StartCoroutine(
 				addlap(string.Format("{0:00}:{1:00}:{2:00}", bestlap[0], bestlap[1], bestlap[2]),
-					PlayerPrefs.GetString("username")));
+				PlayerPrefs.GetString("username")));
 		}
 		bestlapui.text = "Best Lap: " + string.Format("{0:00}:{1:00}:{2:00}",bestlap[0],bestlap[1],bestlap[2]);
 		StopWatchReset();
 		checkpointA=0;
 		checkpointB=0;
 		checkpointC=0;
+		lapcount++ ;
 	}
-
 }
-
+	void Update()
+    	{
+		if(lapcount >= maxlaps +1){
+			StopWatchStop();
+			string toshow = "Game Ended\nTotal Time: " + totaltime.ToString("mm:ss:ff") +"\nBestlap: " + string.Format("{0:00}:{1:00}:{2:00}",bestlap[0],bestlap[1],bestlap[2]);
+			backgamefinished.alpha = 0.46f;
+			gamefinished.text=toshow;
+			
+		}else{lapsui.text = "Lap: " + lapcount + "/" + maxlaps;}
+	}
 }

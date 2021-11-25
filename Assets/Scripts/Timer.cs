@@ -32,7 +32,7 @@ public class Timer : MonoBehaviour
 
     public void StopLootingTimer(){
         StopCoroutine("StopCoroutine");
-        PlayerPrefs.SetFloat("lootingTime", time);
+        PlayerPrefs.SetString("lootingTime", string.Format("{0:00}:{1:00}:{2:00}",min,sec,msec));
     }
 }
 
