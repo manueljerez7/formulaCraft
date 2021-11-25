@@ -19,8 +19,9 @@ public class GameAssets : MonoBehaviour
 
     public SoundAudioClip[] soundAudioClipArray;
 
-    // public float masterVolume = 1.0f;
     public AudioMixer audioMixer;
+
+    public GameSetup gs;
 
     [System.Serializable]
     public class SoundAudioClip
