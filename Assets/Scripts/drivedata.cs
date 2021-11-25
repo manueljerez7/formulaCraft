@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class drivedata : MonoBehaviour
 {
@@ -46,10 +47,15 @@ public class drivedata : MonoBehaviour
             {
                 PauseGame();
 				backgroundpause.alpha = 0.46f;
-                pausemenu.text = "Game Paused\nPress ESC to Resume";
+                pausemenu.text = "Game Paused\nPress ESC to Resume\nPress R to Restart";
 				
             }
-
         }
+		if (Input.GetKeyUp("r")){
+			if(Time.timeScale == 0){
+				SceneManager.LoadScene("RacingScene");
+				Time.timeScale = 1;
+			}
+		}
     }
 }

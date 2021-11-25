@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
+using UnityEngine.SceneManagement;
 
 public class finishline : MonoBehaviour
 {
@@ -117,9 +118,17 @@ void OnCollisionEnter(Collision collision){
     	{
 		if(lapcount >= maxlaps +1){
 			StopWatchStop();
-			string toshow = "Game Ended\nTotal Time: " + totaltime.ToString("mm:ss:ff") +"\nBestlap: " + string.Format("{0:00}:{1:00}:{2:00}",bestlap[0],bestlap[1],bestlap[2]);
+			string toshow = "Game Ended\nTotal Time: " + totaltime.ToString("mm:ss:ff") +"\nBestlap: "
+			+ string.Format("{0:00}:{1:00}:{2:00}",bestlap[0],bestlap[1],bestlap[2]) 
+			+ "\nPress Enter To Return to Main Menu";
 			backgamefinished.alpha = 0.46f;
 			gamefinished.text=toshow;
+			if(Input.GetKeyUp(KeyCode.Return)){
+				SceneManager.LoadScene("MainMenu");
+			}
+			if(Input.GetKeyUp("r")){
+				SceneManager.LoadScene("RacingScene");
+			}
 			
 		}else{lapsui.text = "Lap: " + lapcount + "/" + maxlaps;}
 	}
