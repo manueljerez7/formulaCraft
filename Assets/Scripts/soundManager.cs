@@ -54,6 +54,7 @@ public static class soundManager
     { 
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.tag = "Sound";
 
             AudioMixer mixer = Resources.Load("MasterMixer") as AudioMixer;
             if(soundSfxTypeDictionary.ContainsKey(sound) && !soundSfxTypeDictionary[sound])
