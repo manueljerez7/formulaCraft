@@ -54,6 +54,7 @@ public static class soundManager
     { 
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+            audioSource.tag = "Sound";
 
             AudioMixer mixer = Resources.Load("MasterMixer") as AudioMixer;
             if(soundSfxTypeDictionary.ContainsKey(sound) && !soundSfxTypeDictionary[sound])
@@ -73,7 +74,8 @@ public static class soundManager
         audioSource.loop = true;
         AudioMixer mixer = Resources.Load("MasterMixer") as AudioMixer;
         audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups(output_mixer_music)[0];
-        audioSource.PlayOneShot(GetAudioClip(sound));
+        audioSource.clip = GetAudioClip(sound);
+        audioSource.Play();
     }
 
 

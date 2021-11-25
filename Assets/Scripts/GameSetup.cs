@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.Audio;
 
 //game setup
 public class GameSetup : MonoBehaviour
@@ -10,7 +11,6 @@ public class GameSetup : MonoBehaviour
     private void Awake()
     {
         currentSceneName = SceneManager.GetActiveScene().name;
-        print(currentSceneName);
         soundManager.Initialize();
         
     }
@@ -26,11 +26,19 @@ public class GameSetup : MonoBehaviour
         {
             soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicRacing);
         }
+
+        InvokeRepeating("DestroyAllSounds", 15.0f, 15.0f);
     }
 
-    // Update is called once per frame
-    void Update()
+    void DestroyAllSounds()
     {
-       
+        GameObject[] sounds = GameObject.FindGameObjectsWithTag("Sound");
+        for (int i = 0; i < sounds.Length; i++)
+        {
+            if (!sounds[i].GetComponent<AudioSource>().isPlaying)
+            {
+                Destroy(sounds[i]);
+            }
+        }
     }
 }
