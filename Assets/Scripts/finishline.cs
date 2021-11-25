@@ -2,14 +2,16 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Networking;
 
 public class finishline : MonoBehaviour
 {
 	public Text stopwatch;
 	public Text lastlapui;
 	public Text bestlapui;
-	public float[] lastlap;
+	public float lastlap;
 	public float[] bestlap;
+	public float calcbestlap;
 	public float time;
 	float msec;
 	float sec;
@@ -19,7 +21,6 @@ public class finishline : MonoBehaviour
 	public int checkpointC=0;
 
 void Start(){
-	lastlap = new float[3] {0.0f,0.0f,0.0f};
 	bestlap = new float[3] {100.0f,100.0f,100.0f};
 }
 
@@ -51,27 +52,37 @@ IEnumerator StopWatch()
 	}
 }
 
+IEnumerator addlap(string laptime,string playername)
+{
+	UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/addlap?laptime="+laptime+"&playername="+playername);
+	yield return uwr.SendWebRequest();
+
+	if (uwr.result == UnityWebRequest.Result.ConnectionError || uwr.result == UnityWebRequest.Result.DataProcessingError || uwr.result == UnityWebRequest.Result.ProtocolError)
+	{
+		print("Error While Sending: " + uwr.error);
+	}
+	else
+	{
+		print("Received: " + uwr.downloadHandler.text);
+	}
+}
+
 void OnCollisionEnter(Collision collision){
 	if (checkpointA== 0 && checkpointB==0 && checkpointC==0){
 		StopWatchStart();
 	}
-	if (checkpointA== 1 && checkpointB==1 && checkpointC==1){
-		lastlap[0] = min;
-		lastlap[1] = sec;
-		lastlap[2] = msec;
+	if (checkpointA== 1 && checkpointB==1 && checkpointC==1)
+	{
+		lastlap = min * 60000 + sec * 1000 + msec;
+		calcbestlap = bestlap[0] * 60000 + bestlap[1] * 1000 + bestlap[2];
 		lastlapui.text = "Last Lap: " + string.Format("{0:00}:{1:00}:{2:00}",min,sec,msec);
-		if(lastlap[0] < bestlap[0]){
-			bestlap[0]=lastlap[0];
-			bestlap[1]=lastlap[1];
-			bestlap[2]=lastlap[2];
-		}else if(lastlap[1] < bestlap[1]){
-			bestlap[0]=lastlap[0];
-			bestlap[1]=lastlap[1];
-			bestlap[2]=lastlap[2];
-		}else if(lastlap[2] < bestlap[2] && lastlap[0] <= bestlap[0] && lastlap[1] <= bestlap[1]){
-			bestlap[0]=lastlap[0];
-			bestlap[1]=lastlap[1];
-			bestlap[2]=lastlap[2];
+		if(lastlap < calcbestlap){
+			bestlap[0]=min;
+			bestlap[1]=sec;
+			bestlap[2]=msec;
+			StartCoroutine(
+				addlap(string.Format("{0:00}:{1:00}:{2:00}", bestlap[0], bestlap[1], bestlap[2]),
+					PlayerPrefs.GetString("username")));
 		}
 		bestlapui.text = "Best Lap: " + string.Format("{0:00}:{1:00}:{2:00}",bestlap[0],bestlap[1],bestlap[2]);
 		StopWatchReset();
