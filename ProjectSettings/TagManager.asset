@@ -11,6 +11,7 @@ TagManager:
   - Brake
   - Fire
   - Portal
+  - Sound
   layers:
   - Default
   - TransparentFX
@@ -25,11 +26,6 @@ TagManager:
   - UI
   - Interactable
   - InteractableDisabled
-  - 
-  - 
-  - 
-  - 
-  - 
   - 
   - 
   - 
