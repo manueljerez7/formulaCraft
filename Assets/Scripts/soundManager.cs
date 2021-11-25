@@ -1,9 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
+
 
 public static class soundManager
 {
+    private static string output_mixer_other = "SFX_other";
+    private static string output_mixer_car = "SFX_car";
+    private static string output_mixer_music = "Music";
+
     public enum Sound
     {
         KartAccelerate,
@@ -18,52 +24,65 @@ public static class soundManager
         KartFlip,
         KartStartup,
         GrabCarPart,
+        BackgroundMusicMenu,
+        BackgroundMusicLooting,
+        BackgroundMusicRacing,
     }
 
    private static Dictionary<Sound, float> soundTimerDictionary;
+   private static Dictionary<Sound, bool> soundSfxTypeDictionary; //false-car, true-other
 
-   public static void Initialize()
+    public static void Initialize()
    {
         soundTimerDictionary = new Dictionary<Sound, float>();
-        soundTimerDictionary[Sound.KartAccelerate] = 0.1f;
-   }
+        soundSfxTypeDictionary = new Dictionary<Sound, bool>();
+        soundSfxTypeDictionary[Sound.KartAccelerate] = false;
+        soundSfxTypeDictionary[Sound.KartDecelerate] = false;
+        soundSfxTypeDictionary[Sound.KartBreaks] = false;
+        soundSfxTypeDictionary[Sound.KartHitsObstacle] = true;
+        soundSfxTypeDictionary[Sound.KartHitsRamp] = true;
+        soundSfxTypeDictionary[Sound.KartNitro] = false;
+        soundSfxTypeDictionary[Sound.KartFinishLap] = true;
+        soundSfxTypeDictionary[Sound.KartIdle] = false;
+        soundSfxTypeDictionary[Sound.PowerUpSound] = true;
+        soundSfxTypeDictionary[Sound.KartFlip] = true;
+        soundSfxTypeDictionary[Sound.KartStartup] = false;
+    }
 
    
    public static void PlaySound(Sound sound)
     { 
             GameObject soundGameObject = new GameObject("Sound");
             AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
-            
-            
-            audioSource.PlayOneShot(GetAudioClip(sound));
-            // audioSource.Stop();
 
+            AudioMixer mixer = Resources.Load("MasterMixer") as AudioMixer;
+            if(soundSfxTypeDictionary.ContainsKey(sound) && !soundSfxTypeDictionary[sound])
+            { 
+                audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups(output_mixer_car)[0];
+            }
+            else
+            {
+            audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups(output_mixer_other)[0];
+            }
+            audioSource.PlayOneShot(GetAudioClip(sound));
+    }
+    public static void PlayBackgroundMusic(Sound sound)
+    {
+        GameObject soundGameObject = new GameObject("Backround");
+        AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
+        audioSource.loop = true;
+        AudioMixer mixer = Resources.Load("MasterMixer") as AudioMixer;
+        audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups(output_mixer_music)[0];
+        audioSource.PlayOneShot(GetAudioClip(sound));
     }
 
+
+
+    //DO WE NEED IT?
     private static bool CanPlaySound(Sound sound)
     {
         switch (sound)
         {
-            case Sound.KartIdle:
-                if (soundTimerDictionary.ContainsKey(sound))
-                {
-                    float lastTimePlayed = soundTimerDictionary[sound];
-                    float kartAccelerateTimerMax = .001f;
-                    if(lastTimePlayed + kartAccelerateTimerMax < Time.time)
-                    {
-                        soundTimerDictionary[sound] = Time.time;
-                        return true;
-                    }
-                    else
-                    {
-                        return false;
-                    }
-                }
-                else
-                {
-                    return true;
-                }
-                break;
             default:
                 return true;
         }
