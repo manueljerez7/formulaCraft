@@ -30,16 +30,9 @@ public class GameSetup : MonoBehaviour
         InvokeRepeating("DestroyAllSounds", 15.0f, 15.0f);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-       
-    }
-
     void DestroyAllSounds()
     {
         GameObject[] sounds = GameObject.FindGameObjectsWithTag("Sound");
-        //AudioSource[] sounds = Object.FindObjectsOfType(typeof(AudioSource)) as AudioSource[];
         for (int i = 0; i < sounds.Length; i++)
         {
             if (!sounds[i].GetComponent<AudioSource>().isPlaying)
