@@ -66,7 +66,7 @@ public class kartscript : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.name == "Cube")
+        if (collision.gameObject.name == "Cube////")
         {
             if (speed > 0)
             {
@@ -227,7 +227,7 @@ public class kartscript : MonoBehaviour
 
         }
         else
-        {
+         {
             kart.drag = 0.1f;
             kart.AddForce(Vector3.up * -gravityForce * 10000f);
         }
