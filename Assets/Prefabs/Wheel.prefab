@@ -126,3 +126,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   rarity: 0
+  materials:
+  - {fileID: 2100000, guid: 8ea3a54a856e0214a9a21799fe0d6aa6, type: 2}
+  - {fileID: 2100000, guid: 6f56a15c7e1c30941a6ff260257741fc, type: 2}
+  - {fileID: 2100000, guid: 4ee8d90b06b3546419075817f1cacf0f, type: 2}
