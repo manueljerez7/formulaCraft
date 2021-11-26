@@ -3,10 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Brake : CarPart
-{
+{   
+    public Material[] materials;
+    Renderer renderer;
     // Start is called before the first frame update
     void Start()
     {
+        renderer = GetComponent<Renderer>();
+        renderer.enabled=true;
+        if(rarity==0){
+            renderer.sharedMaterial = materials[0];
+        }
+        if(rarity==1){
+            renderer.sharedMaterial = materials[1];
+        }
+        if(rarity==2){
+            renderer.sharedMaterial = materials[2];
+        }
         
     }
 
