@@ -47,13 +47,19 @@ public class drivedata : MonoBehaviour
             {
                 PauseGame();
 				backgroundpause.alpha = 0.46f;
-                pausemenu.text = "Game Paused\nPress ESC to Resume\nPress R to Restart";
+                pausemenu.text = "Game Paused\nPress ESC to Resume\nPress R to Restart Racing\nPress T to Restart Game";
 				
             }
         }
 		if (Input.GetKeyUp("r")){
 			if(Time.timeScale == 0){
 				SceneManager.LoadScene("RacingScene");
+				Time.timeScale = 1;
+			}
+		}
+		if (Input.GetKeyUp("t")){
+			if(Time.timeScale == 0){
+				SceneManager.LoadScene("LootingArea");
 				Time.timeScale = 1;
 			}
 		}

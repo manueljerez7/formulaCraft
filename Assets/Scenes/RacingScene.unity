@@ -466,7 +466,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: -1.6000061, y: -72.4}
+  m_AnchoredPosition: {x: -1.5999756, y: -72.399994}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0, y: 0.5}
 --- !u!114 &159774095
@@ -7749,7 +7749,6 @@ GameObject:
   - component: {fileID: 2082760231}
   - component: {fileID: 2082760234}
   - component: {fileID: 2082760233}
-  - component: {fileID: 2082760232}
   m_Layer: 5
   m_Name: gamefinished
   m_TagString: Untagged
@@ -7776,21 +7775,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &2082760232
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2082760230}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c5c4771327767d14b944842cd7153027, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  leaderboardui: {fileID: 2082760233}
-  leaderboardflag: 0
-  backgroundlead: {fileID: 2088946368}
 --- !u!114 &2082760233
 MonoBehaviour:
   m_ObjectHideFlags: 0

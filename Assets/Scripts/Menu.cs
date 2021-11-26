@@ -46,6 +46,11 @@ public class Menu : MonoBehaviour
     	SceneManager.LoadScene("OptionsMenu");		
 	}
 
+	public void Leaderboard()
+	{
+    	SceneManager.LoadScene("LeaderboardMenu");		
+	}
+
     public void SetMasterVolume(float volume)
     {
         GameAssets.i.audioMixer.SetFloat("masterVolume", volume);
