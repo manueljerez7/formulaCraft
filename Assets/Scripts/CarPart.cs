@@ -10,7 +10,7 @@ public abstract class CarPart : MonoBehaviour
     //maybe we'll remove this from the mother class
     [SerializeField] public int rarity = 0;
     private GameObject m_Player;
-    int distanceToRespawn = 3;
+    int distanceToRespawn = 1;
     
     
     // Start is called before the first frame update
@@ -47,7 +47,8 @@ public abstract class CarPart : MonoBehaviour
     public void outFromInventory()
     {
 		//move it to in front of the player
-		transform.position = m_Player.transform.position +distanceToRespawn* m_Player.transform.forward;
+        //NEEDS TO BE CHECKED
+		transform.position = m_Player.transform.position; //+distanceToRespawn* m_Player.transform.forward + new Vector3(0,5,0);
 		
 	    //undo everything from addedToInventory()
         MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();

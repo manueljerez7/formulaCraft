@@ -50,13 +50,13 @@ public class Brake : CarPart
 
     public override void disableCollider()
     {
-        Collider boxCollider = gameObject.GetComponent<CapsuleCollider>();
-        boxCollider.enabled = false;
+        Collider meshCollider = gameObject.GetComponent<MeshCollider>();
+        meshCollider.enabled = false;
     }
 
     public override void enableCollider()
     {
-        Collider boxCollider = gameObject.GetComponent<CapsuleCollider>();
-        boxCollider.enabled = true;
+        Collider meshCollider = gameObject.GetComponent<MeshCollider>();
+        meshCollider.enabled = true;
     }
 }

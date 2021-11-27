@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 8372898688433050619}
   - component: {fileID: 8372898688434147643}
   - component: {fileID: 4365741685932215724}
-  - component: {fileID: 1875481865951158226}
   - component: {fileID: 2707173078690151591}
+  - component: {fileID: 2068756320932860446}
   m_Layer: 6
   m_Name: Wheel
   m_TagString: Wheel
@@ -42,7 +42,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8372898688431886331}
-  m_Mesh: {fileID: 4300002, guid: 103612e5e1ff43a4e896c567a2cb3ae1, type: 3}
+  m_Mesh: {fileID: -7369213513044002339, guid: c18c4b8fc20d9644aa360224949f32bd, type: 3}
 --- !u!23 &8372898688434147643
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -100,19 +100,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!135 &1875481865951158226
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8372898688431886331}
-  m_Material: {fileID: 13400000, guid: e52fb17f9b1e7fd48b8955f1391d3688, type: 2}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 1
-  m_Center: {x: -0.000000059604645, y: 0, z: 0.000000029802322}
 --- !u!114 &2707173078690151591
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -130,3 +117,17 @@ MonoBehaviour:
   - {fileID: 2100000, guid: 8ea3a54a856e0214a9a21799fe0d6aa6, type: 2}
   - {fileID: 2100000, guid: 6f56a15c7e1c30941a6ff260257741fc, type: 2}
   - {fileID: 2100000, guid: 4ee8d90b06b3546419075817f1cacf0f, type: 2}
+--- !u!64 &2068756320932860446
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8372898688431886331}
+  m_Material: {fileID: 13400000, guid: e52fb17f9b1e7fd48b8955f1391d3688, type: 2}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 4
+  m_Convex: 1
+  m_CookingOptions: 30
+  m_Mesh: {fileID: -7369213513044002339, guid: c18c4b8fc20d9644aa360224949f32bd, type: 3}
