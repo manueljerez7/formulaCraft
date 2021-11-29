@@ -12,6 +12,7 @@ TagManager:
   - Fire
   - Portal
   - Sound
+  - Hand
   layers:
   - Default
   - TransparentFX

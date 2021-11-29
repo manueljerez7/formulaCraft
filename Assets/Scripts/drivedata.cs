@@ -47,7 +47,7 @@ public class drivedata : MonoBehaviour
             {
                 PauseGame();
 				backgroundpause.alpha = 0.46f;
-                pausemenu.text = "Game Paused\nPress ESC to Resume\nPress R to Restart Racing\nPress T to Restart Game";
+                pausemenu.text = "Game Paused\nPress ESC to Resume\nPress R to Restart Racing\nPress T to go back to Menu";
 				
             }
         }
@@ -59,7 +59,7 @@ public class drivedata : MonoBehaviour
 		}
 		if (Input.GetKeyUp("t")){
 			if(Time.timeScale == 0){
-				SceneManager.LoadScene("LootingArea");
+				SceneManager.LoadScene("MainMenu");
 				Time.timeScale = 1;
 			}
 		}
