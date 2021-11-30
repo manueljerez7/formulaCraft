@@ -3,10 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class Brake : CarPart
-{
+{   
+    public Material[] materials;
+    Renderer renderer;
     // Start is called before the first frame update
     void Start()
     {
+        renderer = GetComponent<Renderer>();
+        renderer.enabled=true;
+        if(rarity==0){
+            renderer.sharedMaterial = materials[0];
+        }
+        if(rarity==1){
+            renderer.sharedMaterial = materials[1];
+        }
+        if(rarity==2){
+            renderer.sharedMaterial = materials[2];
+        }
         
     }
 
@@ -37,13 +50,13 @@ public class Brake : CarPart
 
     public override void disableCollider()
     {
-        Collider boxCollider = gameObject.GetComponent<CapsuleCollider>();
-        boxCollider.enabled = false;
+        Collider meshCollider = gameObject.GetComponent<MeshCollider>();
+        meshCollider.enabled = false;
     }
 
     public override void enableCollider()
     {
-        Collider boxCollider = gameObject.GetComponent<CapsuleCollider>();
-        boxCollider.enabled = true;
+        Collider meshCollider = gameObject.GetComponent<MeshCollider>();
+        meshCollider.enabled = true;
     }
 }

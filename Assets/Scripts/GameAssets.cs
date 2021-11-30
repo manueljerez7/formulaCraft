@@ -2,17 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using System.Reflection;
+using UnityEngine.Audio;
 
 public class GameAssets : MonoBehaviour
 {
-    //public AudioClip kartAccelerate;
-    //public AudioClip kartDecelerate;
-    //public AudioClip kartBreaks;
-    //public AudioClip kartHitSound;
-    //public AudioClip kartNitro;
-    //public AudioClip kartFinishLap;
-
-
     private static GameAssets _i;
 
     public static GameAssets i
@@ -26,6 +19,10 @@ public class GameAssets : MonoBehaviour
 
     public SoundAudioClip[] soundAudioClipArray;
 
+    public AudioMixer audioMixer;
+
+    public GameSetup gs;
+
     [System.Serializable]
     public class SoundAudioClip
     {
@@ -33,5 +30,6 @@ public class GameAssets : MonoBehaviour
         public AudioClip audioClip;
 
     }
+
 
 }
