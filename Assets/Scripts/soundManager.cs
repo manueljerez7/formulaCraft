@@ -18,6 +18,9 @@ public static class soundManager
         KartFlip,
         KartStartup,
         GrabCarPart,
+        Jump,
+        JumpLand,
+        TraversePortal,
     }
 
    private static Dictionary<Sound, float> soundTimerDictionary;
