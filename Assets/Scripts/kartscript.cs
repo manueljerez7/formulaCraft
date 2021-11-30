@@ -51,6 +51,17 @@ public class kartscript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        ContactPoint contact = collision.contacts[0];
+        Vector3 pos = contact.point;
+        
+        // if(collision.gameObject.name == "Road.002" || collision.gameObject.name == "Landscape.001")
+        // {
+        //     // kart.AddForce(gravityForce*1000.0f * pos);
+        //     kart.AddForce(pos * -gravityForce * 3f);
+        //     soundManager.PlaySound(soundManager.Sound.KartHitsObstacle);
+        //     print("Add force");
+        // }
+        
         if(collision.gameObject.tag == "Obstacle")
         {
             soundManager.PlaySound(soundManager.Sound.KartHitsObstacle);
@@ -64,9 +75,10 @@ public class kartscript : MonoBehaviour
         */
     }
 
+
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.name == "Cube////")
+        if (collision.gameObject.name == "Road.002")
         {
             if (speed > 0)
             {
