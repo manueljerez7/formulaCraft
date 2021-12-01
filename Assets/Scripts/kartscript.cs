@@ -41,6 +41,7 @@ public class kartscript : MonoBehaviour
     	timetozero=PlayerPrefs.GetFloat("timeToZero"); //Slightly Impacted by brake power, the lower the better
     	timetostationary = PlayerPrefs.GetFloat("timeToStationary"); 
         nitrocap = 0.0f;
+        nitropower = 2.0f;
         speed = 0;
         revspeed = 0;
         acceleration =  topspeed / timetotop;
@@ -51,13 +52,13 @@ public class kartscript : MonoBehaviour
     }
     private void OnCollisionEnter(Collision collision)
     {
+        kart.freezeRotation = true;
         ContactPoint contact = collision.contacts[0];
         Vector3 pos = contact.point;
         
         if(collision.gameObject.name == "Road.002" || collision.gameObject.name == "Landscape.001")
         {
-            // kart.AddForce(gravityForce*1000.0f * pos);
-            kart.AddForce(pos * -gravityForce * 3f);
+            kart.AddForce(pos * -gravityForce * 20f);
             soundManager.PlaySound(soundManager.Sound.KartHitsObstacle);
             print("Add force");
         }
@@ -78,21 +79,21 @@ public class kartscript : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.name == "Road.002d")
+        if (collision.gameObject.name == "Road.002" || collision.gameObject.name == "Landscape.001")
         {
             if (speed > 0)
             {
                 speed += brakerate * Time.deltaTime;
-                speed = Mathf.Max(speed, 10);
+                speed = Mathf.Max(speed, 20);
                 kart.velocity = transform.forward * speed;
             }
             else
             {
                 revspeed += brakerate * Time.deltaTime;
-                revspeed = Mathf.Max(revspeed, 10);
+                revspeed = Mathf.Max(revspeed, 20);
                 kart.velocity = -transform.forward * revspeed;
             }
-
+        
         }
 
     }

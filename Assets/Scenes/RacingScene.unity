@@ -5751,7 +5751,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -6752082019713627836, guid: 9c0737b74736cd04ead8310a8599d584, type: 3}
       propertyPath: m_LocalScale.z
-      value: 1.15
+      value: 1.38
       objectReference: {fileID: 0}
     - target: {fileID: -4470455406946765199, guid: 9c0737b74736cd04ead8310a8599d584, type: 3}
       propertyPath: m_LocalScale.x
@@ -6172,7 +6172,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 4.21, y: 1.61, z: 10.08}
+  m_Size: {x: 5.22, y: 1.61, z: 9.78}
   m_Center: {x: -2.08, y: 0, z: 1.17}
 --- !u!1 &705207641
 GameObject:

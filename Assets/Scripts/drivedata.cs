@@ -31,7 +31,7 @@ public class drivedata : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        speedometer.text = Mathf.Round(kart.GetComponent<kartscript>().speedometer) +" KM/h";
+        speedometer.text = Mathf.Round(kart.GetComponent<kartscript>().speedometer*0.77f) +" KM/h";
 		nitroavailable.text = "Nitro: " + kart.GetComponent<kartscript>().nitrocap.ToString("F2") +" sec";
 		
 		//Pause/Resume Game
