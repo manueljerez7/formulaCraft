@@ -15,7 +15,7 @@ public class kartscript : MonoBehaviour
     public float timetotop; //Impacted by engine, the lower the better
     public float timetozero; //Slightly Impacted by brake power, the lower the better
     public float timetostationary; //Impacted by Brake Power, the lower the better
-    public float nitropower = 1.0f ;//Timed Ammount of nitro bonus, not impacted by parts
+    public float nitropower = 2.0f ;//Timed Ammount of nitro bonus, not impacted by parts
     private float acceleration;
     private float deceleration ;
     private float brakerate;
@@ -54,13 +54,13 @@ public class kartscript : MonoBehaviour
         ContactPoint contact = collision.contacts[0];
         Vector3 pos = contact.point;
         
-        // if(collision.gameObject.name == "Road.002" || collision.gameObject.name == "Landscape.001")
-        // {
-        //     // kart.AddForce(gravityForce*1000.0f * pos);
-        //     kart.AddForce(pos * -gravityForce * 3f);
-        //     soundManager.PlaySound(soundManager.Sound.KartHitsObstacle);
-        //     print("Add force");
-        // }
+        if(collision.gameObject.name == "Road.002" || collision.gameObject.name == "Landscape.001")
+        {
+            // kart.AddForce(gravityForce*1000.0f * pos);
+            kart.AddForce(pos * -gravityForce * 3f);
+            soundManager.PlaySound(soundManager.Sound.KartHitsObstacle);
+            print("Add force");
+        }
         
         if(collision.gameObject.tag == "Obstacle")
         {
@@ -78,7 +78,7 @@ public class kartscript : MonoBehaviour
 
     void OnCollisionStay(Collision collision)
     {
-        if (collision.gameObject.name == "Road.002")
+        if (collision.gameObject.name == "Road.002d")
         {
             if (speed > 0)
             {
