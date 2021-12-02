@@ -32,6 +32,7 @@ public class finishline : MonoBehaviour
 	public string format = "mm:ss:ff";
 	public string formatspam = @"mm\:ss\:ff";
 	public DateTime loottimeparsed;
+	public bool gamedone;
 
 void Start(){
 	bestlap = new float[3] {100.0f,100.0f,100.0f};
@@ -41,6 +42,7 @@ void Start(){
 	lapcount= 1;
 	maxlaps= 5;
 	lapsui.text = "Lap: " + "/" + maxlaps;
+	gamedone = false;
 }
 
 public void StopWatchStart()
@@ -102,9 +104,6 @@ void OnCollisionEnter(Collision collision){
 			bestlap[0]=min;
 			bestlap[1]=sec;
 			bestlap[2]=msec;
-			StartCoroutine(
-				addlap(string.Format("{0:00}:{1:00}:{2:00}", bestlap[0], bestlap[1], bestlap[2]),
-				PlayerPrefs.GetString("username")));
 		}
 		bestlapui.text = "Best Lap: " + string.Format("{0:00}:{1:00}:{2:00}",bestlap[0],bestlap[1],bestlap[2]);
 		StopWatchReset();
@@ -123,13 +122,16 @@ void OnCollisionEnter(Collision collision){
 			+ "\nPress Enter To Return to Main Menu";
 			backgamefinished.alpha = 0.46f;
 			gamefinished.text=toshow;
+			if(!gamedone){
+				StartCoroutine(addlap(totaltime.ToString("mm:ss:ff"),PlayerPrefs.GetString("username")));
+			}
 			if(Input.GetKeyUp(KeyCode.Return)){
 				SceneManager.LoadScene("MainMenu");
 			}
 			if(Input.GetKeyUp("r")){
 				SceneManager.LoadScene("RacingScene");
 			}
-			
+			gamedone = true;
 		}else{lapsui.text = "Lap: " + lapcount + "/" + maxlaps;}
 	}
 }
