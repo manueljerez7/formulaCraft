@@ -153,7 +153,7 @@ public class InteractionController : MonoBehaviour
 									wheelInventory[2].GetComponent<Wheel>().rarity+
 									wheelInventory[3].GetComponent<Wheel>().rarity)/4;
 		float grip = 50.0f+((avg_wheel_rarity)/2.0f)*60.0f;
-		float topSpeed = 130.0f + (engineInventory[0].GetComponent<Engine>().rarity)*25.0f;
+		float topSpeed = 150.0f + (engineInventory[0].GetComponent<Engine>().rarity)*30.0f;
 		float timeToMaxSpeed = 9 - (engineInventory[0].GetComponent<Engine>().rarity)*1.5f;
 		float timeToZero = 6 - (brakeInventory[0].GetComponent<Brake>().rarity)*0.5f;
 		float timeToStationary = 3 - (brakeInventory[0].GetComponent<Brake>().rarity)*0.5f;

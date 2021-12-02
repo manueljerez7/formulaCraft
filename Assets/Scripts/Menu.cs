@@ -12,6 +12,7 @@ public class Menu : MonoBehaviour
 
     void Start()
     {
+        Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicMenu);
     }
