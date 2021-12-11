@@ -29,25 +29,35 @@ public class CarPartSpawnManager : MonoBehaviour
             spawnPoints[chosenPoint].SendMessage("SpawnPart", 0, SendMessageOptions.RequireReceiver);
             //unusedSpawnPoints2.Remove(chosenPoint);
             unusedSpawnPoints.RemoveAt(chosenPointIndex);
+            print("spawned a wheel");
         }
         
-        //spawn engine
-        chosenPointIndex = Random.Range(0, unusedSpawnPoints.Count);
-        chosenPoint = unusedSpawnPoints[chosenPointIndex];
-        spawnPoints[chosenPoint].SendMessage("SpawnPart", 1);
-        unusedSpawnPoints.RemoveAt(chosenPointIndex);
-        
-        //spawn brakes
-        chosenPointIndex = Random.Range(0, unusedSpawnPoints.Count);
-        chosenPoint = unusedSpawnPoints[chosenPointIndex];
-        spawnPoints[chosenPoint].SendMessage("SpawnPart", 2);
-        unusedSpawnPoints.RemoveAt(chosenPointIndex);
-        
+        //spawn 2 engines
+        for (int i = 0; i < 2; i++)
+        {
+            chosenPointIndex = Random.Range(0, unusedSpawnPoints.Count);
+            chosenPoint = unusedSpawnPoints[chosenPointIndex];
+            spawnPoints[chosenPoint].SendMessage("SpawnPart", 1);
+            unusedSpawnPoints.RemoveAt(chosenPointIndex);
+            print("spawned an engine");
+        }
+
+        //spawn 2 brakes
+        for (int i = 0; i < 2; i++)
+        {
+            chosenPointIndex = Random.Range(0, unusedSpawnPoints.Count);
+            chosenPoint = unusedSpawnPoints[chosenPointIndex];
+            spawnPoints[chosenPoint].SendMessage("SpawnPart", 2);
+            unusedSpawnPoints.RemoveAt(chosenPointIndex);
+            print("spawned a brake");
+        }
+
         //spawn a random part on every leftover point
         foreach (var pointNum in unusedSpawnPoints)
         {
             int randomPartNum = Random.Range(0, 3);
             spawnPoints[pointNum].SendMessage("SpawnPart", randomPartNum);
+            print("spawned a "+randomPartNum);
         }
     }
 
