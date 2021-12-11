@@ -20,8 +20,8 @@ public class CarPartSpawnManager : MonoBehaviour
         int chosenPointIndex;
         int chosenPoint;
         
-        //spawn 4 wheels
-        for (int i = 0; i < 4; i++)
+        //spawn 6 wheels
+        for (int i = 0; i < 6; i++)
         {
             //choose a random spawn point among the unused
             chosenPointIndex = Random.Range(0, unusedSpawnPoints.Count);
