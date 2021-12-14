@@ -25,8 +25,18 @@ public class Menu : MonoBehaviour
 			name= "Unnamed";
  		}
 		PlayerPrefs.SetString("username",name);
-        SceneManager.LoadScene("LootingArea");
+        SceneManager.LoadScene("PlayMenu");
     }
+
+    public void PlaySnowyCourse()
+    {
+    	SceneManager.LoadScene("LootingArea");
+	}
+
+    public void PlayDesertTour()
+    {
+    	SceneManager.LoadScene("LootingArea");
+	}
     
     public void QuitGame()
     {
@@ -51,6 +61,16 @@ public class Menu : MonoBehaviour
 	public void Leaderboard()
 	{
     	SceneManager.LoadScene("LeaderboardMenu");		
+	}
+
+    public void LeaderboardOne()
+	{
+    	SceneManager.LoadScene("Leaderboard1Menu");		
+	}
+
+    public void LeaderboardTwo()
+	{
+    	SceneManager.LoadScene("Leaderboard2Menu");		
 	}
 
     public void SetMasterVolume(float volume)
