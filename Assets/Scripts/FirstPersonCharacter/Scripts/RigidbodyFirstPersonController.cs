@@ -1,6 +1,9 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
+//using FirstPersonSFXController.cs;
+using defaultNamespace;
+//using FirstPersonSfxController.cs;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -169,6 +172,11 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
                     m_Jumping = true;
                     //soundManager.PlaySound(soundManager.Sound.GrabCarPart);
+                    //FirstPersonSfxController ctrl = GameObject.AddComponent<FirstPersonSfxController>();
+                    //FirstPersonSfxController ctrl = new FirstPersonSfxController();
+                    //ctrl.SendMessage("jumpSfx");
+                    soundManager.PlaySound(soundManager.Sound.Jump);
+
                 }
 
                 if (!m_Jumping && Mathf.Abs(input.x) < float.Epsilon && Mathf.Abs(input.y) < float.Epsilon && m_RigidBody.velocity.magnitude < 1f)
@@ -260,7 +268,20 @@ namespace UnityStandardAssets.Characters.FirstPerson
             if (!m_PreviouslyGrounded && m_IsGrounded && m_Jumping)
             {
                 m_Jumping = false;
+                soundManager.PlaySound(soundManager.Sound.JumpLand);
             }
         }
     }
+    /*public class FirstPersonSfxController:MonoBehaviour
+    {
+        private void jumpSfx()
+        {
+            //soundManager.PlaySound(soundManager.Sound.GrabCarPart);   
+        }
+    }*/
 }
+
+/*namespace standar
+{
+    
+}*/
