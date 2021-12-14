@@ -27,6 +27,9 @@ public static class soundManager
         BackgroundMusicMenu,
         BackgroundMusicLooting,
         BackgroundMusicRacing,
+        Jump,
+        JumpLand,
+        TraversePortal,
     }
 
    private static Dictionary<Sound, float> soundTimerDictionary;
