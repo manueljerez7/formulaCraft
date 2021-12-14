@@ -1,9 +1,6 @@
 using System;
 using UnityEngine;
 using UnityStandardAssets.CrossPlatformInput;
-//using FirstPersonSFXController.cs;
-using defaultNamespace;
-//using FirstPersonSfxController.cs;
 
 namespace UnityStandardAssets.Characters.FirstPerson
 {
@@ -272,16 +269,4 @@ namespace UnityStandardAssets.Characters.FirstPerson
             }
         }
     }
-    /*public class FirstPersonSfxController:MonoBehaviour
-    {
-        private void jumpSfx()
-        {
-            //soundManager.PlaySound(soundManager.Sound.GrabCarPart);   
-        }
-    }*/
 }
-
-/*namespace standar
-{
-    
-}*/
