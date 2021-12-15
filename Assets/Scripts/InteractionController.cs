@@ -9,7 +9,7 @@ public class InteractionController : MonoBehaviour
     [SerializeField] GameObject gui;
 
 
-    [SerializeField] private float _interactionDistance = 1f;
+    [SerializeField] private float _interactionDistance = 1.5f;
 
     [SerializeField] private LayerMask _interactableLayer;
     
