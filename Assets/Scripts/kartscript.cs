@@ -59,38 +59,36 @@ public class kartscript : MonoBehaviour
         if(collision.gameObject.name == "Road.002" || collision.gameObject.name == "Landscape.001")
         {
             kart.AddForce(pos * -gravityForce * 20f);
+            if (speed > 0)
+            {
+                speed += -0.35f*speed;
+            }
+            else
+            {
+                revspeed += -0.33f*revspeed;
+            }
             soundManager.PlaySound(soundManager.Sound.KartHitsObstacle);
-            print("Add force");
         }
-        
         if(collision.gameObject.tag == "Obstacle")
         {
             soundManager.PlaySound(soundManager.Sound.KartHitsObstacle);
         }
-
-        /*
-        if (collision.gameObject.tag == "Ramp")
-        {
-            soundManager.PlaySound(soundManager.Sound.KartHitsRamp);
-        }
-        */
     }
-
-
+    
     void OnCollisionStay(Collision collision)
     {
         if (collision.gameObject.name == "Road.002" || collision.gameObject.name == "Landscape.001")
         {
             if (speed > 0)
             {
-                speed += brakerate * Time.deltaTime;
-                speed = Mathf.Max(speed, 20);
+                speed += -350.0f * Time.deltaTime;
+                speed = Mathf.Max(speed, 2);
                 kart.velocity = transform.forward * speed;
             }
             else
             {
-                revspeed += brakerate * Time.deltaTime;
-                revspeed = Mathf.Max(revspeed, 20);
+                revspeed += -350.0f * Time.deltaTime;
+                revspeed = Mathf.Max(revspeed, 2);
                 kart.velocity = -transform.forward * revspeed;
             }
         
@@ -101,9 +99,10 @@ public class kartscript : MonoBehaviour
     {
         //Steering and grip level
         //Steering only when car is moving
+        //degradeble grip by speed increase
         if (speed > 0)
         {
-            rotationAmount = Input.GetAxis("Horizontal") * grip;
+            rotationAmount = Input.GetAxis("Horizontal") * grip *((topspeed-speed*0.35f)/topspeed);
         }
         //Inverted steering for reverse
         if (revspeed > 0)
@@ -112,11 +111,8 @@ public class kartscript : MonoBehaviour
             
         }
         rotationAmount *= Time.deltaTime;
-        //if (grounded)
-        //{
-             kart.transform.Rotate (0.0f, rotationAmount, 0.0f);
-            //kart.transform.rotation = Quaternion.Euler(kart.transform.rotation.eulerAngles + new Vector3(0f, rotationAmount * Input.GetAxis("Vertical"), 0f));
-        //}
+        kart.transform.Rotate (0.0f, rotationAmount, 0.0f);
+
         //Accelerate
         if (Input.GetAxis("Vertical") > 0)
         {
@@ -212,6 +208,11 @@ public class kartscript : MonoBehaviour
                 soundManager.PlaySound(soundManager.Sound.KartNitro);
             }
         }
+        //Drift
+        // if (Input.GetKeyUp(KeyCode.LeftControl))
+        // {
+        //     kart.transform.Rotate (0.0f, 20.0f, 0.0f);
+        // }
         //Flip car
         if(Input.GetKey("f"))
         {
