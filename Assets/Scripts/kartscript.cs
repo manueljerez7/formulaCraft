@@ -118,7 +118,7 @@ public class kartscript : MonoBehaviour
             //kart.transform.rotation = Quaternion.Euler(kart.transform.rotation.eulerAngles + new Vector3(0f, rotationAmount * Input.GetAxis("Vertical"), 0f));
         //}
         //Accelerate
-        if (Input.GetKey("up"))
+        if (Input.GetAxis("Vertical") > 0)
         {
             if ( revspeed <= 0)
             {
@@ -136,7 +136,7 @@ public class kartscript : MonoBehaviour
             soundManager.PlaySound(soundManager.Sound.KartAccelerate);
         }
         //Reverse
-        if (Input.GetKey("down"))
+        if (Input.GetAxis("Vertical") < 0)
         {
             if (speed <= 0)
             {
@@ -169,7 +169,7 @@ public class kartscript : MonoBehaviour
             soundManager.PlaySound(soundManager.Sound.KartBreaks);
         }
         //Deceleration
-        if (!Input.GetKey("up") && !Input.GetKey("down"))
+        if (Input.GetAxis("Vertical") == 0)
         {
             if(speed > 0)
             {
@@ -195,10 +195,18 @@ public class kartscript : MonoBehaviour
             
         }
         //Nitro Powerup
-        if(Input.GetKey("s") && Input.GetKey("up")){
+        if(Input.GetKey(KeyCode.LeftShift) && Input.GetAxis("Vertical")>0){
             if (nitrocap > 0)
             {
-                speed += nitropower;
+                if (speed == topspeed)
+                {
+                    speed += 5;
+                }
+                else
+                {
+                    speed += nitropower;
+                }
+                
                 nitrocap -= Time.deltaTime;
                 nitrocap = Mathf.Max(nitrocap, 0);
                 soundManager.PlaySound(soundManager.Sound.KartNitro);
