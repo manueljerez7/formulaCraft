@@ -141,7 +141,7 @@ public class kartscript : MonoBehaviour
             if (speed <= 0)
             {
                 revspeed += acceleration * Time.deltaTime;
-                revspeed = Mathf.Min(revspeed, topspeed);
+                revspeed = Mathf.Min(revspeed, topspeed/4);
                 kart.velocity = -transform.forward * revspeed;
             }
              else
