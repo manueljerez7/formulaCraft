@@ -15,13 +15,19 @@ public class Menu : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicMenu);
+        name = PlayerPrefs.GetString("username");
+        if(SceneManager.GetActiveScene().name == "MainMenu"){
+        if(name!=null)
+        {
+            inputField.GetComponent<Text>().text = name;
+        }
+        }
     }
 
 
     public void PlayGame(){
 		name = inputField.GetComponent<Text>().text;
 		if(name=="") {
-      		print("Null name");
 			name= "Unnamed";
  		}
 		PlayerPrefs.SetString("username",name);

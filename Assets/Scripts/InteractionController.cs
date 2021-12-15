@@ -148,6 +148,12 @@ public class InteractionController : MonoBehaviour
 
 	public void GenerateValues()
 	{
+        PlayerPrefs.SetInt("engineRarity",engineInventory[0].GetComponent<Engine>().rarity);
+        PlayerPrefs.SetInt("FLrarity",wheelInventory[0].GetComponent<Wheel>().rarity);
+        PlayerPrefs.SetInt("FRrarity",wheelInventory[1].GetComponent<Wheel>().rarity);
+        PlayerPrefs.SetInt("RLrarity",wheelInventory[2].GetComponent<Wheel>().rarity);
+        PlayerPrefs.SetInt("RRrarity",wheelInventory[3].GetComponent<Wheel>().rarity);
+
 		float avg_wheel_rarity = (wheelInventory[0].GetComponent<Wheel>().rarity+
 									wheelInventory[1].GetComponent<Wheel>().rarity+
 									wheelInventory[2].GetComponent<Wheel>().rarity+
