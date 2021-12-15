@@ -9,6 +9,7 @@ public static class soundManager
     private static string output_mixer_other = "SFX_other";
     private static string output_mixer_car = "SFX_car";
     private static string output_mixer_music = "Music";
+    private static bool playingFootsteps = false;
 
     public enum Sound
     {
@@ -30,7 +31,25 @@ public static class soundManager
         Jump,
         JumpLand,
         TraversePortal,
+        Footstep01,
+        Footstep02,
+        Footstep03,
+        Footstep04,
     }
+
+    /*public enum Footsteps
+    {
+        Footstep01,
+        Footstep02,
+        Footstep03,
+        Footstep04,
+    }
+    
+    public static Object[] footstepArray = new []{
+        Footstep01,
+        Footstep02,
+        Footstep03,
+        Footstep04,}*/
 
    private static Dictionary<Sound, float> soundTimerDictionary;
    private static Dictionary<Sound, bool> soundSfxTypeDictionary; //false-car, true-other
@@ -104,5 +123,23 @@ public static class soundManager
         }
         Debug.LogError("Sound" + sound + "not found");
         return null;
+    }
+
+    public static IEnumerator StartPlayingFootsteps()
+    {
+        int randNumToPlay = Random.Range(0,4);
+        yield return new WaitForSeconds(float.Parse("0.5"));
+        PlaySound(Sound.Footstep01);
+        playingFootsteps = true;
+    }
+    
+    public static void StopPlayingFootsteps()
+    {
+        playingFootsteps = false;
+    }
+
+    public static bool isPlayingFootsteps()
+    {
+        return playingFootsteps;
     }
 }

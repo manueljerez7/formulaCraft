@@ -8,6 +8,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
+        private bool isMoving = false;
         [Serializable]
         public class MovementSettings
         {
@@ -26,6 +27,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
 
             public void UpdateDesiredTargetSpeed(Vector2 input)
             {
+                //ojo
 	            if (input == Vector2.zero) return;
 				if (input.x > 0 || input.x < 0)
 				{
@@ -134,6 +136,17 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Jump = true;
             }
+
+            if (m_RigidBody.velocity.x != 0 || m_RigidBody.velocity.y != 0)
+                isMoving = true;
+            else
+                isMoving = false;  
+            
+            if (isMoving)
+                if (!soundManager.isPlayingFootsteps())
+                    soundManager.StartPlayingFootsteps();
+                else
+                    soundManager.StopPlayingFootsteps();
         }
 
 
@@ -142,6 +155,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
             GroundCheck();
             Vector2 input = GetInput();
 
+            //ojo
             if ((Mathf.Abs(input.x) > float.Epsilon || Mathf.Abs(input.y) > float.Epsilon) && (advancedSettings.airControl || m_IsGrounded))
             {
                 // always move along the camera forward as it is the direction that it being aimed at
