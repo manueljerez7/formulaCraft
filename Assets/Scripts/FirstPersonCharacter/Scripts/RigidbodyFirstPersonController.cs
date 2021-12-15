@@ -8,7 +8,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
     [RequireComponent(typeof (CapsuleCollider))]
     public class RigidbodyFirstPersonController : MonoBehaviour
     {
-        private bool isMoving = false;
         [Serializable]
         public class MovementSettings
         {
@@ -136,17 +135,6 @@ namespace UnityStandardAssets.Characters.FirstPerson
             {
                 m_Jump = true;
             }
-
-            if (m_RigidBody.velocity.x != 0 || m_RigidBody.velocity.y != 0)
-                isMoving = true;
-            else
-                isMoving = false;  
-            
-            if (isMoving)
-                if (!soundManager.isPlayingFootsteps())
-                    soundManager.StartPlayingFootsteps();
-                else
-                    soundManager.StopPlayingFootsteps();
         }
 
 
