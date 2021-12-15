@@ -155,6 +155,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     (movementSettings.CurrentTargetSpeed*movementSettings.CurrentTargetSpeed))
                 {
                     m_RigidBody.AddForce(desiredMove*SlopeMultiplier(), ForceMode.Impulse);
+                    //soundManager.PlaySound(soundManager.Sound.);
                 }
             }
 
@@ -168,10 +169,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
                     m_RigidBody.velocity = new Vector3(m_RigidBody.velocity.x, 0f, m_RigidBody.velocity.z);
                     m_RigidBody.AddForce(new Vector3(0f, movementSettings.JumpForce, 0f), ForceMode.Impulse);
                     m_Jumping = true;
-                    //soundManager.PlaySound(soundManager.Sound.GrabCarPart);
-                    //FirstPersonSfxController ctrl = GameObject.AddComponent<FirstPersonSfxController>();
-                    //FirstPersonSfxController ctrl = new FirstPersonSfxController();
-                    //ctrl.SendMessage("jumpSfx");
+                    
                     soundManager.PlaySound(soundManager.Sound.Jump);
 
                 }

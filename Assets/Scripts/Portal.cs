@@ -29,6 +29,12 @@ public class Portal : MonoBehaviour
         controller.SendMessage("GenerateValues");
         timer.SendMessage("StopLootingTimer");
         //change scene to racing area
+        soundManager.PlaySound(soundManager.Sound.TraversePortal);
+        StartCoroutine(waitAndLoadScene());
+    }
+    //we wait 1.1 seconds to let the portal sound play
+    IEnumerator waitAndLoadScene() {
+        yield return /*WaitForSeconds wfs =*/ new WaitForSeconds(float.Parse("1.1"));
         SceneManager.LoadScene("RacingScene"); //TODO change number 1 for whatever scene number the racing area is
     }
 
