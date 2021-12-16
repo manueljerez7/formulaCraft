@@ -46,7 +46,7 @@ public class drivedataloot : MonoBehaviour
                 PauseGame();
 				backgroundpause.alpha = 0.46f;
                 pausemenu.text = "GAME PAUSED\n\nPress ESC to Resume\nPress T to go back to Menu\n"
-                +"Move:WASD\nJump:Space\nRun:Right Shift\nGrab:Left Click";
+                +"Move:WASD\nJump:Space\nRun:Left Shift\nGrab:Left Click";
                 Cursor.visible = false;
 
 				
