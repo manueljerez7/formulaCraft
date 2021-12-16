@@ -41,7 +41,7 @@ public class Menu : MonoBehaviour
 
     public void PlayDesertTour()
     {
-    	SceneManager.LoadScene("LootingArea");
+    	SceneManager.LoadScene("LootingArea2");
 	}
     
     public void QuitGame()
