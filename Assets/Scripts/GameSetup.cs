@@ -19,7 +19,12 @@ public class GameSetup : MonoBehaviour
     {
         if (currentSceneName == "LootingArea")
         {
-            soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicLooting);
+            soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicLooting1);
+        }
+        
+        else if (currentSceneName == "LootingArea2")
+        {
+            soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicLootingEgipt);
         }
 
         else if (currentSceneName == "RacingScene")

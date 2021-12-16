@@ -25,11 +25,12 @@ public static class soundManager
         KartStartup,
         GrabCarPart,
         BackgroundMusicMenu,
-        BackgroundMusicLooting,
+        BackgroundMusicLooting1,
         BackgroundMusicRacing,
         Jump,
         JumpLand,
         TraversePortal,
+        BackgroundMusicLootingEgipt,
     }
 
 
