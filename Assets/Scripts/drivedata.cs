@@ -47,7 +47,8 @@ public class drivedata : MonoBehaviour
             {
                 PauseGame();
 				backgroundpause.alpha = 0.46f;
-                pausemenu.text = "Game Paused\nPress ESC to Resume\nPress R to Restart Racing\nPress T to go back to Menu";
+                pausemenu.text = "GAME PAUSED\n\nPress ESC to Resume\nPress R to Restart Racing\nPress T to go back to Menu"+
+                "\nMove:WASD\nNitro:Right Shift\nBrake:Space";
 				
             }
         }
