@@ -32,6 +32,7 @@ public static class soundManager
         TraversePortal,
     }
 
+
    private static Dictionary<Sound, float> soundTimerDictionary;
    private static Dictionary<Sound, bool> soundSfxTypeDictionary; //false-car, true-other
 
