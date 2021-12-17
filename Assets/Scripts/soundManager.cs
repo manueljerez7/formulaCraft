@@ -52,6 +52,10 @@ public static class soundManager
         soundSfxTypeDictionary[Sound.PowerUpSound] = true;
         soundSfxTypeDictionary[Sound.KartFlip] = true;
         soundSfxTypeDictionary[Sound.KartStartup] = false;
+        soundSfxTypeDictionary[Sound.GrabCarPart] = false;
+        soundSfxTypeDictionary[Sound.Jump] = false;
+        soundSfxTypeDictionary[Sound.JumpLand] = false;
+        soundSfxTypeDictionary[Sound.TraversePortal] = false;
     }
 
    
