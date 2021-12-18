@@ -92,6 +92,6 @@ public class Menu : MonoBehaviour
     public void SetSFXVolume(float volume)
     {
         GameAssets.i.audioMixer.SetFloat("sfxOtherVolume", volume);
-        GameAssets.i.audioMixer.SetFloat("sfxCarVolume", volume-10.0f);
+        GameAssets.i.audioMixer.SetFloat("sfxCarVolume", volume-25.0f);
     }
 }

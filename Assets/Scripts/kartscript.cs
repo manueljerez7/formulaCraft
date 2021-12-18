@@ -146,6 +146,8 @@ public class kartscript : MonoBehaviour
                  speed = Mathf.Max(speed, 0);
                  kart.velocity = transform.forward * speed;
             }
+
+            soundManager.PlaySound(soundManager.Sound.KartAccelerate);
         }
         //Brake
         if (Input.GetKey("space"))
@@ -155,6 +157,7 @@ public class kartscript : MonoBehaviour
                 speed += brakerate * Time.deltaTime;
                 speed = Mathf.Max(speed, 0);
                 kart.velocity = transform.forward * speed;
+                soundManager.PlaySound(soundManager.Sound.KartBreaks);
             }
             else
             {
@@ -162,7 +165,7 @@ public class kartscript : MonoBehaviour
                 revspeed = Mathf.Max(revspeed, 0);
                 kart.velocity = -transform.forward * revspeed;
             }
-            soundManager.PlaySound(soundManager.Sound.KartBreaks);
+            
         }
         //Deceleration
         if (Input.GetAxis("Vertical") == 0)
