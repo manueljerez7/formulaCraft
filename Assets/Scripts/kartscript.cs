@@ -199,7 +199,7 @@ public class kartscript : MonoBehaviour
             {
                 if (speed == topspeed)
                 {
-                    speed += 5;
+                    speed += 20;
                 }
                 else
                 {
