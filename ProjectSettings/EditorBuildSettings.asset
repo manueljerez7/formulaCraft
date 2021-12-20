@@ -41,5 +41,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/LootingAreaTutorial.unity
     guid: 49e3d117c04364573bb869df79b4c7e8
+  - enabled: 1
+    path: Assets/Scenes/RacingSceneTutorial.unity
+    guid: fe957993489d0424aa8833b20a6aa4f1
   m_configObjects:
     com.unity.input.settings: {fileID: 11400000, guid: 9e7be553448fa2546aea5752021cbcf7, type: 2}
