@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class InteractionController : MonoBehaviour
 {
@@ -19,10 +20,19 @@ public class InteractionController : MonoBehaviour
     public GameObject[] engineInventory = new GameObject[1];
     public GameObject[] brakeInventory = new GameObject[1];
     public bool inventoryFull = false;
+    public Text carProperties;
+    public float gripGUI = 0f;
+    public float acc = 0f;
+    public float decc = 0f;
+    public float topSpeedGUI = 0f;
     
     //public engineScript
 	void Start(){
 		gui = GameObject.Find("InventoryHud");
+        carProperties.text = "Grip: "+gripGUI.ToString()+"\n"+
+            "Acceleration: "+acc.ToString()+"\n"+
+            "Decceleration: "+decc.ToString()+"\n"+
+            "Top Speed: "+topSpeedGUI.ToString();
 }
 
     void Update()
@@ -45,7 +55,27 @@ public class InteractionController : MonoBehaviour
                     if (objectTag == "Wheel")
                     {
                         AddWheel(hitInfo.collider.gameObject);
-					              gui.SendMessage("addWheelGUI");
+					    gui.SendMessage("addWheelGUI");
+                        print("Hola");
+
+                        if(wheelInventory[1]==null && wheelInventory[2]==null && wheelInventory[3]==null){
+                            gripGUI = wheelInventory[0].GetComponent<Wheel>().rarity;
+                        }
+                        if(wheelInventory[1]!=null && wheelInventory[2]==null && wheelInventory[3]==null){
+                            gripGUI = (wheelInventory[0].GetComponent<Wheel>().rarity + wheelInventory[1].GetComponent<Wheel>().rarity);
+                        }
+                        if(wheelInventory[1]!=null && wheelInventory[2]!=null && wheelInventory[3]==null){
+                            gripGUI = (wheelInventory[0].GetComponent<Wheel>().rarity + wheelInventory[1].GetComponent<Wheel>().rarity + wheelInventory[2].GetComponent<Wheel>().rarity);
+                        }
+                        if(wheelInventory[1]!=null && wheelInventory[2]!=null && wheelInventory[3]!=null){
+                            gripGUI = (wheelInventory[0].GetComponent<Wheel>().rarity + wheelInventory[1].GetComponent<Wheel>().rarity + wheelInventory[2].GetComponent<Wheel>().rarity + wheelInventory[3].GetComponent<Wheel>().rarity);
+                        }
+
+                        carProperties.text = "Grip: "+gripGUI.ToString()+"\n"+
+                        "Acceleration: "+acc.ToString()+"\n"+
+                        "Decceleration: "+decc.ToString()+"\n"+
+                        "Top Speed: "+topSpeedGUI.ToString();
+
                     }
 
                     else if (objectTag == "Engine")
@@ -56,6 +86,15 @@ public class InteractionController : MonoBehaviour
                         }
                         engineInventory[0] = hitInfo.collider.gameObject;
 					              gui.SendMessage("addEngineGUI");
+
+                        topSpeedGUI = 150.0f + (engineInventory[0].GetComponent<Engine>().rarity)*30.0f;
+                        acc = (engineInventory[0].GetComponent<Engine>().rarity)*1.5f;
+
+                        carProperties.text = "Grip: "+gripGUI.ToString()+"\n"+
+                        "Acceleration: "+acc.ToString()+"\n"+
+                        "Decceleration: "+decc.ToString()+"\n"+
+                        "Top Speed: "+topSpeedGUI.ToString();
+                        
                     }
 
 
@@ -68,6 +107,12 @@ public class InteractionController : MonoBehaviour
 
                         brakeInventory[0] = hitInfo.collider.gameObject;
 					              gui.SendMessage("addBrakeGUI");
+
+                        decc = (brakeInventory[0].GetComponent<Brake>().rarity)*0.5f;
+                        carProperties.text = "Grip: "+gripGUI.ToString()+"\n"+
+                        "Acceleration: "+acc.ToString()+"\n"+
+                        "Decceleration: "+decc.ToString()+"\n"+
+                        "Top Speed: "+topSpeedGUI.ToString();
                     }
 
                     //make the grabbed item disappear from the 3D space
