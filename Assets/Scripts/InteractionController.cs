@@ -19,9 +19,9 @@ public class InteractionController : MonoBehaviour
     public GameObject[] engineInventory = new GameObject[1];
     public GameObject[] brakeInventory = new GameObject[1];
     public bool inventoryFull = false;
-    
+
     //public engineScript
-	void Start(){
+    void Start(){
 		gui = GameObject.Find("InventoryHud");
 }
 

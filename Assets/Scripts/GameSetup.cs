@@ -27,6 +27,11 @@ public class GameSetup : MonoBehaviour
             soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicLootingEgipt);
         }
 
+        else if (currentSceneName == "LootingAreaTutorial")
+        {
+            soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicLootingTutorial);
+        }
+
         else if (currentSceneName == "RacingScene")
         {
             soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicRacing);

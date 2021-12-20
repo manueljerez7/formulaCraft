@@ -31,6 +31,7 @@ public static class soundManager
         JumpLand,
         TraversePortal,
         BackgroundMusicLootingEgipt,
+        BackgroundMusicLootingTutorial,
     }
 
 
