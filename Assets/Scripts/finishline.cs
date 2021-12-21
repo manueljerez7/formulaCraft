@@ -12,6 +12,7 @@ public class finishline : MonoBehaviour
 	public GameObject checkA;
 	public GameObject checkB;
 	public GameObject checkC;
+	public GameObject checkS;
 	public GameObject finishln;
 	public Text stopwatch;
 	public Text wrongdirection;
@@ -33,6 +34,7 @@ public class finishline : MonoBehaviour
 	public int checkpointA=0;
 	public int checkpointB=0;
 	public int checkpointC=0;
+	public int checkpointS=0;
 	public int lapcount;
 	public int maxlaps;
 	public string format = "mm:ss:ff";
@@ -118,6 +120,7 @@ void OnCollisionEnter(Collision collision){
 		checkpointA=0;
 		checkpointB=0;
 		checkpointC=0;
+		checkpointS=0;
 		lapcount++ ;
 		foreach (var obj in nitros) {
 			obj.SetActive(true);
@@ -126,11 +129,20 @@ void OnCollisionEnter(Collision collision){
 }
 	void Update()
     	{
-	        if (checkpointA== 0 && checkpointB==0 && checkpointC==0){
+	        if (checkpointS == 0 && checkpointA== 0 && checkpointB==0 && checkpointC==0){
+		        var targetdir = (checkS.transform.position - kart.position).normalized;
+		        var currentdir = kart.transform.forward;
+		        
+		        if (Vector3.Dot(targetdir, currentdir) < 0)
+		        {
+			        wrongdirection.text = "Wrong Direction";
+		        }else{wrongdirection.text="";}
+
+	        }else if (checkpointA== 0 && checkpointB==0 && checkpointC==0){
 		        var targetdir = (checkA.transform.position - kart.position).normalized;
 		        var currentdir = kart.transform.forward;
 		        
-		        if (Vector3.Dot(targetdir, currentdir) < -0.5f)
+		        if (Vector3.Dot(targetdir, currentdir) < 0)
 		        {
 			        wrongdirection.text = "Wrong Direction";
 		        }else{wrongdirection.text="";}
@@ -139,7 +151,7 @@ void OnCollisionEnter(Collision collision){
 	        {
 		        var targetdir = (checkB.transform.position - kart.position).normalized;
 		        var currentdir = kart.transform.forward;
-		        if (Vector3.Dot(targetdir, currentdir) <-0.5f)
+		        if (Vector3.Dot(targetdir, currentdir) <0)
 		        {
 			        wrongdirection.text = "Wrong Direction";
 		        }else{wrongdirection.text="";}
@@ -147,7 +159,7 @@ void OnCollisionEnter(Collision collision){
 	        {
 		        var targetdir = (checkC.transform.position - kart.position).normalized;
 		        var currentdir = kart.transform.forward;
-		        if (Vector3.Dot(targetdir, currentdir) <-0.5f)
+		        if (Vector3.Dot(targetdir, currentdir) < -0.5f)
 		        {
 			        wrongdirection.text = "Wrong Direction";
 		        }else{wrongdirection.text="";}
@@ -155,7 +167,7 @@ void OnCollisionEnter(Collision collision){
 	        {
 		        var targetdir = (finishln.transform.position - kart.position).normalized;
 		        var currentdir = kart.transform.forward;
-		        if (Vector3.Dot(targetdir, currentdir) <-0.5f)
+		        if (Vector3.Dot(targetdir, currentdir) <0)
 		        {
 			        wrongdirection.text = "Wrong Direction";
 		        }else{wrongdirection.text="";}
