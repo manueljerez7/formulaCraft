@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using UnityEngine.Networking;
 using System;
 using UnityEngine.SceneManagement;
+using TMPro;
 
 public class finishline : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public class finishline : MonoBehaviour
 	public GameObject checkS;
 	public GameObject finishln;
 	public Text stopwatch;
-	public Text wrongdirection;
+	public TMP_Text wrongdirection;
 	public Text lastlapui;
 	public Text bestlapui;
 	public Text totaltimeui;
@@ -130,46 +131,45 @@ void OnCollisionEnter(Collision collision){
 	void Update()
     	{
 	        if (checkpointS == 0 && checkpointA== 0 && checkpointB==0 && checkpointC==0){
-		        var targetdir = (checkS.transform.position - kart.position).normalized;
-		        var currentdir = kart.transform.forward;
-		        
+		        var targetdir = (checkS.transform.position - kart.transform.position).normalized;
+		        var currentdir = kart.transform.forward.normalized;
 		        if (Vector3.Dot(targetdir, currentdir) < 0)
 		        {
-			        wrongdirection.text = "Wrong Direction";
+			        wrongdirection.text = "Wrong Direction!";
 		        }else{wrongdirection.text="";}
 
 	        }else if (checkpointA== 0 && checkpointB==0 && checkpointC==0){
-		        var targetdir = (checkA.transform.position - kart.position).normalized;
-		        var currentdir = kart.transform.forward;
+		        var targetdir = (checkA.transform.position - kart.transform.position).normalized;
+		        var currentdir = kart.transform.forward.normalized;
 		        
 		        if (Vector3.Dot(targetdir, currentdir) < 0)
 		        {
-			        wrongdirection.text = "Wrong Direction";
+			        wrongdirection.text = "Wrong Direction!";
 		        }else{wrongdirection.text="";}
 		        
 	        }else if (checkpointA == 1 && checkpointB == 0 && checkpointC == 0)
 	        {
-		        var targetdir = (checkB.transform.position - kart.position).normalized;
-		        var currentdir = kart.transform.forward;
+		        var targetdir = (checkB.transform.position - kart.transform.position).normalized;
+		        var currentdir = kart.transform.forward.normalized;
 		        if (Vector3.Dot(targetdir, currentdir) <0)
 		        {
-			        wrongdirection.text = "Wrong Direction";
+			        wrongdirection.text = "Wrong Direction!";
 		        }else{wrongdirection.text="";}
 	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 0)
 	        {
-		        var targetdir = (checkC.transform.position - kart.position).normalized;
-		        var currentdir = kart.transform.forward;
-		        if (Vector3.Dot(targetdir, currentdir) < -0.5f)
+		        var targetdir = (checkC.transform.position - kart.transform.position).normalized;
+		        var currentdir = kart.transform.forward.normalized;
+		        if (Vector3.Dot(targetdir, currentdir) < 0)
 		        {
-			        wrongdirection.text = "Wrong Direction";
+			        wrongdirection.text = "Wrong Direction!";
 		        }else{wrongdirection.text="";}
 	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 1)
 	        {
-		        var targetdir = (finishln.transform.position - kart.position).normalized;
-		        var currentdir = kart.transform.forward;
+		        var targetdir = (finishln.transform.position - kart.transform.position).normalized;
+		        var currentdir = kart.transform.forward.normalized;
 		        if (Vector3.Dot(targetdir, currentdir) <0)
 		        {
-			        wrongdirection.text = "Wrong Direction";
+			        wrongdirection.text = "Wrong Direction!";
 		        }else{wrongdirection.text="";}
 	        }
 
