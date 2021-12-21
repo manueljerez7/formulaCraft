@@ -8,7 +8,13 @@ using UnityEngine.SceneManagement;
 
 public class finishline : MonoBehaviour
 {
+	public Rigidbody kart;
+	public GameObject checkA;
+	public GameObject checkB;
+	public GameObject checkC;
+	public GameObject finishln;
 	public Text stopwatch;
+	public Text wrongdirection;
 	public Text lastlapui;
 	public Text bestlapui;
 	public Text totaltimeui;
@@ -33,8 +39,9 @@ public class finishline : MonoBehaviour
 	public string formatspam = @"mm\:ss\:ff";
 	public DateTime loottimeparsed;
 	public bool gamedone;
+	private GameObject[] nitros;
 
-void Start(){
+	void Start(){
 	bestlap = new float[3] {100.0f,100.0f,100.0f};
 	lootingtime = PlayerPrefs.GetString("lootingTime");
 	loottimeparsed = DateTime.ParseExact(lootingtime,format,null);
@@ -43,6 +50,7 @@ void Start(){
 	maxlaps= 5;
 	lapsui.text = "Lap: " + "/" + maxlaps;
 	gamedone = false;
+	nitros = GameObject.FindGameObjectsWithTag("nitro");
 }
 
 public void StopWatchStart()
@@ -111,11 +119,49 @@ void OnCollisionEnter(Collision collision){
 		checkpointB=0;
 		checkpointC=0;
 		lapcount++ ;
+		foreach (var obj in nitros) {
+			obj.SetActive(true);
+		}
 	}
 }
 	void Update()
     	{
-		if(lapcount >= maxlaps +1){
+	        if (checkpointA== 0 && checkpointB==0 && checkpointC==0){
+		        var targetdir = (checkA.transform.position - kart.position).normalized;
+		        var currentdir = kart.transform.forward;
+		        
+		        if (Vector3.Dot(targetdir, currentdir) < -0.5f)
+		        {
+			        wrongdirection.text = "Wrong Direction";
+		        }else{wrongdirection.text="";}
+		        
+	        }else if (checkpointA == 1 && checkpointB == 0 && checkpointC == 0)
+	        {
+		        var targetdir = (checkB.transform.position - kart.position).normalized;
+		        var currentdir = kart.transform.forward;
+		        if (Vector3.Dot(targetdir, currentdir) <-0.5f)
+		        {
+			        wrongdirection.text = "Wrong Direction";
+		        }else{wrongdirection.text="";}
+	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 0)
+	        {
+		        var targetdir = (checkC.transform.position - kart.position).normalized;
+		        var currentdir = kart.transform.forward;
+		        if (Vector3.Dot(targetdir, currentdir) <-0.5f)
+		        {
+			        wrongdirection.text = "Wrong Direction";
+		        }else{wrongdirection.text="";}
+	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 1)
+	        {
+		        var targetdir = (finishln.transform.position - kart.position).normalized;
+		        var currentdir = kart.transform.forward;
+		        if (Vector3.Dot(targetdir, currentdir) <-0.5f)
+		        {
+			        wrongdirection.text = "Wrong Direction";
+		        }else{wrongdirection.text="";}
+	        }
+
+	        if(lapcount >= maxlaps +1){
 			StopWatchStop();
 			string toshow = "Game Ended\nTotal Time: " + totaltime.ToString("mm:ss:ff") +"\nBestlap: "
 			+ string.Format("{0:00}:{1:00}:{2:00}",bestlap[0],bestlap[1],bestlap[2]) 

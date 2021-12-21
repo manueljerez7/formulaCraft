@@ -97,6 +97,8 @@ public class kartscript : MonoBehaviour
     }
     void Update()
     {
+        //float dist = Vector3.Distance(kart.position, finishline.transform.position);
+        //print("Distance to other: " + dist);
         //Steering and grip level
         //Steering only when car is moving
         //degradeble grip by speed increase
@@ -208,13 +210,9 @@ public class kartscript : MonoBehaviour
                 soundManager.PlaySound(soundManager.Sound.KartNitro);
             }
         }
-        //Drift
-        // if (Input.GetKeyUp(KeyCode.LeftControl))
-        // {
-        //     kart.transform.Rotate (0.0f, 20.0f, 0.0f);
-        // }
+
         //Flip car
-        if(Input.GetKey("f"))
+        if(Input.GetKeyUp("f"))
         {
                 if (Mathf.Abs(Vector3.Dot(kart.transform.up, Vector3.down)) >0.0f && speed <= 0.1f)
                 {
