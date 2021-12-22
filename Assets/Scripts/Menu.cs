@@ -19,15 +19,15 @@ public class Menu : MonoBehaviour
         if(SceneManager.GetActiveScene().name == "MainMenu"){
         if(name!=null)
         {
-            inputField.GetComponent<Text>().text = name;
+            inputField.GetComponent<InputField>().text = name;
         }
         }
     }
 
 
     public void PlayGame(){
-		name = inputField.GetComponent<Text>().text;
-		if(name=="") {
+		name = inputField.GetComponent<InputField>().text;
+		if(name=="Write your name here") {
 			name= "Unnamed";
  		}
 		PlayerPrefs.SetString("username",name);
