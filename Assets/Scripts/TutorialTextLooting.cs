@@ -7,7 +7,7 @@ public class TutorialTextLooting : MonoBehaviour
 {
     Text text;
     //moving arround - part 1
-    public string text1 = "You are now in the looting zone. Quick! Find all the car pieces to build your car and start racing.";
+    public string text1 = "You are now in the looting zone. Quick! Find all the car pieces to build your car.";
     public string text11 = "But first ... a warm up!";
     public string text2 = "MOVE with WSAD or ARROWS.";
     public string text3 = "If you're in a hurry RUN with RIGHT SHIFT.";
@@ -18,7 +18,7 @@ public class TutorialTextLooting : MonoBehaviour
     public string text6 = "Remember: GOLD pieces are the best, BLUE - cool but not outstanding and GREY ... they're simply ok.";
     //portal - part 3
     public string text7 = "Congratulations! You picked all the car pieces.";
-    public string text77 = "Now you must find a portal which leads to the racing part where real fun begins.";
+    public string text77 = "Now you must find a portal leading to the racing part. Go quick, every second matters!";
     public string text8 = "See you on the other side!";
 
     public string[] tutorial_text;
@@ -39,7 +39,7 @@ public class TutorialTextLooting : MonoBehaviour
         text = gameObject.GetComponentInChildren<Text>();
 
         SetTutorialPart(tutorial_part);
-        InvokeRepeating("ChangeVisibliityBox", 3, 4);
+        InvokeRepeating("ChangeVisibliityBox", 3, 5);
 
     }
 
@@ -117,7 +117,7 @@ public class TutorialTextLooting : MonoBehaviour
         {
             CancelInvoke();
             ChangeTutorialPart();
-            InvokeRepeating("ChangeVisibliityBox", 0, 3);
+            InvokeRepeating("ChangeVisibliityBox", 0, 5);
         }
     }
 }
