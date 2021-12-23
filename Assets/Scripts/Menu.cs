@@ -91,11 +91,12 @@ public class Menu : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         GameAssets.i.audioMixer.SetFloat("musicVolume", volume);
+        //sfx car mixer is a child of music mixer
+        GameAssets.i.audioMixer.SetFloat("sfxCarVolume", volume + 25.0f);
     }
 
     public void SetSFXVolume(float volume)
     {
         GameAssets.i.audioMixer.SetFloat("sfxOtherVolume", volume);
-        GameAssets.i.audioMixer.SetFloat("sfxCarVolume", volume-25.0f);
     }
 }

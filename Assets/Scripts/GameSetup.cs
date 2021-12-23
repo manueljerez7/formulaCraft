@@ -32,7 +32,7 @@ public class GameSetup : MonoBehaviour
             soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicRacing);
         }
 
-        InvokeRepeating("DestroyAllSounds", 15.0f, 15.0f);
+        InvokeRepeating("DestroyAllSounds", 10.0f, 10.0f);
     }
 
     void DestroyAllSounds()
