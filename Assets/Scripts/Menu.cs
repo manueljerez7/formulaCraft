@@ -24,6 +24,14 @@ public class Menu : MonoBehaviour
         }
     }
 
+    public void PlayTutorial(){
+		name = inputField.GetComponent<Text>().text;
+		if(name=="") {
+			name= "Unnamed";
+ 		}
+		PlayerPrefs.SetString("username",name);
+        SceneManager.LoadScene("LootingAreaTutorial");
+    }
 
     public void PlayGame(){
 		name = inputField.GetComponent<Text>().text;
