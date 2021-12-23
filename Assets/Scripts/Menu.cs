@@ -9,12 +9,13 @@ public class Menu : MonoBehaviour
 {
 	public string name;
 	public GameObject inputField;
+    private GameObject backgroundMusicMenu;
 
     void Start()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicMenu);
+
         name = PlayerPrefs.GetString("username");
         if(SceneManager.GetActiveScene().name == "MainMenu"){
         if(name!=null)
@@ -22,6 +23,7 @@ public class Menu : MonoBehaviour
             inputField.GetComponent<Text>().text = name;
         }
         }
+        backgroundMusicMenu = GameObject.Find("BackgroundMusic");
     }
 
 
@@ -36,12 +38,14 @@ public class Menu : MonoBehaviour
 
     public void PlaySnowyCourse()
     {
-    	SceneManager.LoadScene("LootingArea");
+        backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);
+        SceneManager.LoadScene("LootingArea");
 	}
 
     public void PlayDesertTour()
     {
-    	SceneManager.LoadScene("LootingArea2");
+        backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);
+        SceneManager.LoadScene("LootingArea2");
 	}
     
     public void QuitGame()
