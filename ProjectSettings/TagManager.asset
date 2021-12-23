@@ -13,6 +13,7 @@ TagManager:
   - Portal
   - Sound
   - Hand
+  - nitro
   layers:
   - Default
   - TransparentFX

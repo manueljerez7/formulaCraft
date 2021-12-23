@@ -9,6 +9,7 @@ public class PlayIntro : MonoBehaviour
     void Start () 
     {
         StartCoroutine("changeScene");
+        PlayerPrefs.SetString("username","Write your name here");
     }
 
     IEnumerator changeScene()
