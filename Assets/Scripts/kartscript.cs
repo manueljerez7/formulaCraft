@@ -97,8 +97,6 @@ public class kartscript : MonoBehaviour
     }
     void Update()
     {
-        //float dist = Vector3.Distance(kart.position, finishline.transform.position);
-        //print("Distance to other: " + dist);
         //Steering and grip level
         //Steering only when car is moving
         //degradeble grip by speed increase
