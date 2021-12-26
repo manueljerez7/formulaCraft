@@ -27,11 +27,12 @@ public class Menu : MonoBehaviour
     }
 
     public void PlayTutorial(){
-		name = inputField.GetComponent<Text>().text;
+	    name = inputField.GetComponent<InputField>().text; //changed <Text> to <InputField>
 		if(name=="") {
 			name= "Unnamed";
  		}
 		PlayerPrefs.SetString("username",name);
+        backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);
         SceneManager.LoadScene("LootingAreaTutorial");
     }
 
