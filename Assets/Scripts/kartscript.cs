@@ -199,7 +199,7 @@ public class kartscript : MonoBehaviour
             {
                 if (speed == topspeed)
                 {
-                    speed += 5;
+                    speed += 20;
                 }
                 else
                 {
@@ -211,13 +211,9 @@ public class kartscript : MonoBehaviour
                 soundManager.PlaySound(soundManager.Sound.KartNitro);
             }
         }
-        //Drift
-        // if (Input.GetKeyUp(KeyCode.LeftControl))
-        // {
-        //     kart.transform.Rotate (0.0f, 20.0f, 0.0f);
-        // }
+
         //Flip car
-        if(Input.GetKey("f"))
+        if(Input.GetKeyUp("f"))
         {
                 if (Mathf.Abs(Vector3.Dot(kart.transform.up, Vector3.down)) >0.0f && speed <= 0.1f)
                 {

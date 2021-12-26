@@ -53,10 +53,10 @@ public static class soundManager
         soundSfxTypeDictionary[Sound.PowerUpSound] = true;
         soundSfxTypeDictionary[Sound.KartFlip] = true;
         soundSfxTypeDictionary[Sound.KartStartup] = false;
-        soundSfxTypeDictionary[Sound.GrabCarPart] = false;
-        soundSfxTypeDictionary[Sound.Jump] = false;
-        soundSfxTypeDictionary[Sound.JumpLand] = false;
-        soundSfxTypeDictionary[Sound.TraversePortal] = false;
+        soundSfxTypeDictionary[Sound.GrabCarPart] = true;
+        soundSfxTypeDictionary[Sound.Jump] = true;
+        soundSfxTypeDictionary[Sound.JumpLand] = true;
+        soundSfxTypeDictionary[Sound.TraversePortal] = true;
     }
 
    
@@ -82,6 +82,7 @@ public static class soundManager
         GameObject soundGameObject = new GameObject("Backround");
         AudioSource audioSource = soundGameObject.AddComponent<AudioSource>();
         audioSource.loop = true;
+        audioSource.priority = 100;
         AudioMixer mixer = Resources.Load("MasterMixer") as AudioMixer;
         audioSource.outputAudioMixerGroup = mixer.FindMatchingGroups(output_mixer_music)[0];
         audioSource.clip = GetAudioClip(sound);

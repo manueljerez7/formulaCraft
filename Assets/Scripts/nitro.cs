@@ -10,7 +10,7 @@ public class nitro : MonoBehaviour
         if (other.CompareTag("Player"))
         { 
             kart.GetComponent<kartscript>().nitrocap += 1.0f;
-            Destroy(gameObject);
+			gameObject.SetActive(false);
         }
     }
 

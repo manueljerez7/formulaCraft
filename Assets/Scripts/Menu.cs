@@ -9,19 +9,21 @@ public class Menu : MonoBehaviour
 {
 	public string name;
 	public GameObject inputField;
+    private GameObject backgroundMusicMenu;
 
     void Start()
     {
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicMenu);
+
         name = PlayerPrefs.GetString("username");
         if(SceneManager.GetActiveScene().name == "MainMenu"){
         if(name!=null)
         {
-            inputField.GetComponent<Text>().text = name;
+            inputField.GetComponent<InputField>().text = name;
         }
         }
+        backgroundMusicMenu = GameObject.Find("BackgroundMusic");
     }
 
     public void PlayTutorial(){
@@ -34,8 +36,8 @@ public class Menu : MonoBehaviour
     }
 
     public void PlayGame(){
-		name = inputField.GetComponent<Text>().text;
-		if(name=="") {
+		name = inputField.GetComponent<InputField>().text;
+		if(name=="Write your name here") {
 			name= "Unnamed";
  		}
 		PlayerPrefs.SetString("username",name);
@@ -44,12 +46,14 @@ public class Menu : MonoBehaviour
 
     public void PlaySnowyCourse()
     {
-    	SceneManager.LoadScene("LootingArea");
+        backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);
+        SceneManager.LoadScene("LootingArea");
 	}
 
     public void PlayDesertTour()
     {
-    	SceneManager.LoadScene("LootingArea2");
+        backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);
+        SceneManager.LoadScene("LootingArea2");
 	}
     
     public void QuitGame()
@@ -95,11 +99,12 @@ public class Menu : MonoBehaviour
     public void SetMusicVolume(float volume)
     {
         GameAssets.i.audioMixer.SetFloat("musicVolume", volume);
+        //sfx car mixer is a child of music mixer
+        GameAssets.i.audioMixer.SetFloat("sfxCarVolume", 20.0f);
     }
 
     public void SetSFXVolume(float volume)
     {
         GameAssets.i.audioMixer.SetFloat("sfxOtherVolume", volume);
-        GameAssets.i.audioMixer.SetFloat("sfxCarVolume", volume-25.0f);
     }
 }
