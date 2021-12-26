@@ -9401,6 +9401,7 @@ MonoBehaviour:
   format: mm:ss:ff
   formatspam: mm\:ss\:ff
   gamedone: 0
+  isTutorial: 1
 --- !u!1 &1696812520
 GameObject:
   m_ObjectHideFlags: 0

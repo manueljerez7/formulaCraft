@@ -44,6 +44,8 @@ public class finishline : MonoBehaviour
 	public bool gamedone;
 	private GameObject[] nitros;
 
+	[SerializeField] private bool isTutorial;
+
 	void Start(){
 	bestlap = new float[3] {100.0f,100.0f,100.0f};
 	lootingtime = PlayerPrefs.GetString("lootingTime");
@@ -89,16 +91,22 @@ IEnumerator StopWatch()
 
 IEnumerator addlap(string laptime,string playername)
 {
-	UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/addlap?laptime="+laptime+"&playername="+playername);
-	yield return uwr.SendWebRequest();
+	if (!isTutorial) //we don't send the result to the leaderboards if we're on the tutorial
+	{
+		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/addlap?laptime=" + laptime +
+		                                          "&playername=" + playername);
+		yield return uwr.SendWebRequest();
 
-	if (uwr.result == UnityWebRequest.Result.ConnectionError || uwr.result == UnityWebRequest.Result.DataProcessingError || uwr.result == UnityWebRequest.Result.ProtocolError)
-	{
-		print("Error While Sending: " + uwr.error);
-	}
-	else
-	{
-		print("Received: " + uwr.downloadHandler.text);
+		if (uwr.result == UnityWebRequest.Result.ConnectionError ||
+		    uwr.result == UnityWebRequest.Result.DataProcessingError ||
+		    uwr.result == UnityWebRequest.Result.ProtocolError)
+		{
+			print("Error While Sending: " + uwr.error);
+		}
+		else
+		{
+			print("Received: " + uwr.downloadHandler.text);
+		}
 	}
 }
 
