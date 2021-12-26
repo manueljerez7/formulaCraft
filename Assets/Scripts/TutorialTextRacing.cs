@@ -20,66 +20,48 @@ public class TutorialTextRacing : MonoBehaviour
     //flip and end - part 4
     public string text9;
     public string text10;
+    public string text11;
 
     public string[] tutorial_text;
+
+    [SerializeField] public nitro[] Nitros;
 
     //public GameObject spawing_manager;
     //[SerializeField] InteractionController controller;
 
     private bool isBoxActive;
     private int current_text;
-    private int tutorial_part;
 
     // Start is called before the first frame update
     void Start()
     {
-        tutorial_part = 1;
         current_text = 0;
         isBoxActive = false;
         text = gameObject.GetComponentInChildren<Text>();
 
-        SetTutorialPart(tutorial_part);
+        InitTextArray();
         InvokeRepeating("ChangeVisibliityBox", 3, 5);
     }
 
-    void SetTutorialPart(int part)
+    void InitTextArray()
     {
-        if (part == 1)
-        {
-            tutorial_text = new string[4];
+        tutorial_text = new string[11];
             tutorial_text[0] = text1;
             tutorial_text[1] = text2;
             tutorial_text[2] = text3;
             tutorial_text[3] = text4;
-            //TODO gotta fix all this
-        }
-        if (part == 2)
-        {
-            tutorial_text = new string[2];
-            tutorial_text[0] = text5;
-            tutorial_text[1] = text6;
-        }
-        if (part == 3)
-        {
-            tutorial_text = new string[2];
-            tutorial_text[0] = text7;
-            tutorial_text[1] = text8;
-        }
-
-        if (part == 4)
-        {
-            tutorial_text = new string[2];
-            tutorial_text[0] = text9;
-            tutorial_text[1] = text10;
-        }
+            tutorial_text[4] = text5;
+            tutorial_text[5] = text6;
+            tutorial_text[6] = text7;
+            tutorial_text[7] = text8;
+            tutorial_text[8] = text9;
+            tutorial_text[9] = text10;
+            tutorial_text[10] = text11;
     }
 
     // Update is called once per frame
     void Update()
     {
-        //TODO wasteful to do in update()?
-        print("current_text = "+current_text);
-        text.text = tutorial_text[current_text];
     }
 
     void ChangeVisibliityBox()
@@ -88,47 +70,36 @@ public class TutorialTextRacing : MonoBehaviour
         isBoxActive = !isBoxActive;
         if(!gameObject.active)
         {
-            current_text += 1;
-            if (tutorial_part == 1 && current_text > 3)
+            if (current_text < tutorial_text.Length-1)
             {
-                ChangeTutorialPart();
+                current_text += 1;
+                //moved
+                print("current_text = " + current_text);
+                text.text = tutorial_text[current_text];
             }
-            if (tutorial_part == 2 && current_text > 1)
-            {
-                //maybe remove
-                ChangeTutorialPart();
-                
-                //TODO wtf
-                /*CancelInvoke();
-                InvokeRepeating("WaitForThePortal", 0.0f, 1.0f);*/
-            }
-            if (tutorial_part == 3 && current_text > 1)
-            {
-                //maybe remove
-                ChangeTutorialPart();
-                
-                //TODO wtf
-                //CancelInvoke();
-            }
+            else
+                CancelInvoke();
         }
 
-        if (tutorial_part == 2 && current_text == 1)
+        if (current_text == 4) //el 5
         {
-            //TODO: spawn nitro
+            SpawnNitros();
         }
 
-        if (tutorial_part == 4 && current_text == 1)
+        if (current_text == 8) //el 9
         {
             //TODO: flip car
         }
     }
 
-    void ChangeTutorialPart()
+    private void SpawnNitros()
     {
-        current_text = 0;
-        tutorial_part += 1;
-        SetTutorialPart(tutorial_part);
+        foreach (var nitro in Nitros)
+        {
+            nitro.SendMessage("MakeVisibleAndEnable");
+        }
     }
+
 
     //Waits till inventory full to progress
     /*private void WaitForThePortal()

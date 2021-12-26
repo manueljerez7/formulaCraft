@@ -13,4 +13,15 @@ public class nitro : MonoBehaviour
             Destroy(gameObject);
         }
     }
+
+    //method used in the tutorial.
+    //makes the nitro visible and enables it.
+    //this is because in the tutorial starts with no nitros (they're invisible and disabled) 
+    public void MakeVisibleAndEnable()
+    {
+        MeshRenderer mr = gameObject.GetComponent<MeshRenderer>();
+        mr.enabled = true;
+        SphereCollider sc = gameObject.GetComponent<SphereCollider>();
+        sc.enabled = true;
+    }
 }
