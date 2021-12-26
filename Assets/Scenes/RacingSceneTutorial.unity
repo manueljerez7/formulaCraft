@@ -8195,26 +8195,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1373184638}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d4c22d0c86284cd6b03ab3262500c93, type: 3}
+  m_Script: {fileID: 11500000, guid: e9abd674f9904072bbc342f35eb62b52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text1: You are now in the looting zone. Quick! Find all the car pieces to build
-    your car.
-  text11: But first ... a warm up!
-  text2: MOVE with WSAD or ARROWS.
-  text3: If you're in a hurry RUN with LEFT SHIFT.
-  text4: JUMP with SPACE.
-  text5: Moving is fun but driving is even better so let's build your car!
-  text55: PICK an item by LEFT CLICKING on it .
-  text6: 'Remember: GOLD pieces are the best, BLUE - cool but not outstanding and
-    GREY ... they''re simply ok.'
-  text7: Congratulations! You picked all the car pieces.
-  text77: Now you must find a portal which leads to the racing part where real fun
-    begins. Go quick, every second matters!
-  text8: See you on the other side!
+  text1: "Welcome to the racing part. 3\u20262\u20261\u2026GO!"
+  text2: Accelerate with W (or Up arrow). Steer with A and D (or Left and Right arrows).
+  text3: Your car has been built with the pieces you collected.
+  text4: Brake with SPACEBAR. Reverse with S (or Down arrow).
+  text5: "Around the track you\u2019ll find Nitro Containers that you can pick up.
+    Hit them and they\u2019ll fill your Nitro meter."
+  text6: Use the Nitro with LEFT SHIFT.
+  text7: Press ESC to pause. The pause menu contains additional information on controls.
+  text8: You can check the leaderboard for this track with TAB.
+  text9: If your car flips, you can flip it back with F.
+  text10: A race is made of 5 laps.
   tutorial_text: []
-  spawing_manager: {fileID: 0}
-  controller: {fileID: 0}
 --- !u!114 &1373184641
 MonoBehaviour:
   m_ObjectHideFlags: 0
