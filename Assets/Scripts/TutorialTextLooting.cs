@@ -10,7 +10,7 @@ public class TutorialTextLooting : MonoBehaviour
     public string text1 = "You are now in the looting zone. Quick! Find all the car pieces to build your car.";
     public string text11 = "But first ... a warm up!";
     public string text2 = "MOVE with WSAD or ARROWS.";
-    public string text3 = "If you're in a hurry RUN with RIGHT SHIFT.";
+    public string text3 = "If you're in a hurry RUN with LEFT SHIFT.";
     public string text4 = "JUMP with SPACE.";
     //item picking - part 2
     public string text5 = "Moving is fun but driving is even better so let's build your car!";
