@@ -8534,8 +8534,8 @@ MonoBehaviour:
   text6: Use the Nitro with LEFT SHIFT.
   text7: Press ESC to pause. The pause menu contains additional information on controls.
   text8: You can check the leaderboard for this track with TAB.
-  text9: If you hit a wall, your car might flip like this. Flip it back with F.
-  text10: A race is made of 5 laps.
+  text9: If your car flips, you can flip it back with F.
+  text10: A real race is made of 5 laps.
   text11: "Now you\u2019re all caught up! Press ESC and return to the main menu when
     you feel ready to start racing."
   tutorial_text: []

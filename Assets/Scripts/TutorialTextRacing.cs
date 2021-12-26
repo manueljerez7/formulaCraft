@@ -26,11 +26,10 @@ public class TutorialTextRacing : MonoBehaviour
 
     [SerializeField] public nitro[] Nitros;
 
-    //public GameObject spawing_manager;
-    //[SerializeField] InteractionController controller;
-
     private bool isBoxActive;
     private int current_text;
+
+    private bool carFlipped = false;
 
     // Start is called before the first frame update
     void Start()
@@ -81,14 +80,18 @@ public class TutorialTextRacing : MonoBehaviour
                 CancelInvoke();
         }
 
-        if (current_text == 4) //el 5
+        else //if it's active. these will be executed as soon as their box shows up
         {
-            SpawnNitros();
-        }
+            if (current_text == 4) //el 5
+            {
+                SpawnNitros();
+            }
 
-        if (current_text == 8) //el 9
-        {
-            //TODO: flip car
+            if (current_text == 8 && !carFlipped) //el 9
+            {
+                MakeCarFlip();
+                carFlipped = true;
+            }
         }
     }
 
@@ -100,16 +103,7 @@ public class TutorialTextRacing : MonoBehaviour
         }
     }
 
-
-    //Waits till inventory full to progress
-    /*private void WaitForThePortal()
+    private void MakeCarFlip()
     {
-        //if youve picked up everything
-        if(controller.inventoryFull)
-        {
-            CancelInvoke();
-            ChangeTutorialPart();
-            InvokeRepeating("ChangeVisibliityBox", 0, 5);
-        }
-    }*/
+    }
 }
