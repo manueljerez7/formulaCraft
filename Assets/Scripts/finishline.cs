@@ -93,6 +93,7 @@ IEnumerator addlap(string laptime,string playername)
 {
 	if (!isTutorial) //we don't send the result to the leaderboards if we're on the tutorial
 	{
+		print("preparing to send result to the leaderboards");
 		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/addlap?laptime=" + laptime +
 		                                          "&playername=" + playername);
 		yield return uwr.SendWebRequest();
@@ -107,6 +108,10 @@ IEnumerator addlap(string laptime,string playername)
 		{
 			print("Received: " + uwr.downloadHandler.text);
 		}
+	}
+	else
+	{
+		print("won't send result to the leaderboards, because tutorial");
 	}
 }
 

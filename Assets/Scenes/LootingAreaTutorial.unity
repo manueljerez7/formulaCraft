@@ -222,7 +222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 359091474403646118, guid: 4e43d6f25ce0242099e4c39131c8f715, type: 3}
       propertyPath: spawnPointRarity
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3054831539876152878, guid: 4e43d6f25ce0242099e4c39131c8f715, type: 3}
       propertyPath: m_RootOrder
@@ -2219,7 +2219,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 359091474403646118, guid: 4e43d6f25ce0242099e4c39131c8f715, type: 3}
       propertyPath: spawnPointRarity
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3054831539876152878, guid: 4e43d6f25ce0242099e4c39131c8f715, type: 3}
       propertyPath: m_RootOrder
