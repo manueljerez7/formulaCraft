@@ -8723,9 +8723,8 @@ MonoBehaviour:
   text7: Press ESC to pause. The pause menu contains additional information on controls.
   text8: You can check the leaderboard for this track with TAB.
   text9: If your car flips, you can flip it back with F.
-  text10: A real race is made of 5 laps.
-  text11: "Now you\u2019re all caught up! Press ESC and return to the main menu when
-    you feel ready to start racing."
+  text10: A real race is made up of 5 laps.
+  text11: "You\u2019re all caught up! Take your time to test the controls"
   tutorial_text: []
   Nitros:
   - {fileID: 1366285896}

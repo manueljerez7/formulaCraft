@@ -52,7 +52,10 @@ public class finishline : MonoBehaviour
 	loottimeparsed = DateTime.ParseExact(lootingtime,format,null);
 	totaltimeui.text = "Total Time: " + loottimeparsed.ToString("mm:ss:ff");
 	lapcount= 1;
-	maxlaps= 5;
+	if (!isTutorial)
+		maxlaps = 5;
+	else
+		maxlaps = 3;
 	lapsui.text = "Lap: " + "/" + maxlaps;
 	gamedone = false;
 	nitros = GameObject.FindGameObjectsWithTag("nitro");
