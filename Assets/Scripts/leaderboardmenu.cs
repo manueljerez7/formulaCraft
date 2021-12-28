@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class leaderboardmenu : MonoBehaviour
 {
@@ -18,6 +19,12 @@ public class leaderboardmenu : MonoBehaviour
 
 	IEnumerator getleaderboard()
 	{
+		if(SceneManager.GetActiveScene().name=="Leaderboard1Menu"){
+			scenename="RacingScene";
+		}
+		if(SceneManager.GetActiveScene().name=="Leaderboard2Menu"){
+			scenename="DesertRacing";
+		}
 		string leaderboard = "";
 		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/fastestlaps?limit=10&track="+scenename);
 		yield return uwr.SendWebRequest();
