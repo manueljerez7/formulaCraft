@@ -3990,7 +3990,7 @@ MonoBehaviour:
     StrafeSpeed: 4
     RunMultiplier: 1.5
     RunKey: 304
-    JumpForce: 70
+    JumpForce: 60
     SlopeCurveModifier:
       serializedVersion: 2
       m_Curve:
@@ -4050,10 +4050,10 @@ CapsuleCollider:
   m_Material: {fileID: 13400000, guid: ba92fb44336020f40bdf294bb66bc9da, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.15003982
+  m_Radius: 0.15491836
   m_Height: 1.6
   m_Direction: 1
-  m_Center: {x: 0.11329383, y: 0, z: -0.23666617}
+  m_Center: {x: 0.11329385, y: 0, z: -0.23178764}
 --- !u!20 &5757758065378746850
 Camera:
   m_ObjectHideFlags: 0
@@ -4162,9 +4162,9 @@ CapsuleCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   m_Radius: 0.3385867
-  m_Height: 1.0369838
+  m_Height: 1.6316124
   m_Direction: 1
-  m_Center: {x: 0.10920537, y: 0.30844384, z: -0.07984245}
+  m_Center: {x: 0.109205365, y: 0.011129558, z: -0.07984245}
 --- !u!1 &5757758065379468230
 GameObject:
   m_ObjectHideFlags: 0
