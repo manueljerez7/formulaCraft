@@ -30,7 +30,12 @@ public class Portal : MonoBehaviour
         timer.SendMessage("StopLootingTimer");
         //change scene to racing area
         soundManager.PlaySound(soundManager.Sound.TraversePortal);
-        SceneManager.LoadScene("RacingScene"); //TODO change number 1 for whatever scene number the racing area is
+        if(SceneManager.GetActiveScene().name=="LootingArea"){
+            SceneManager.LoadScene("RacingScene"); //TODO change number 1 for whatever scene number the racing area is
+        }
+        if(SceneManager.GetActiveScene().name=="LootingArea2"){
+            SceneManager.LoadScene("DesertRacing"); //TODO change number 1 for whatever scene number the racing area is
+        }
     }
 
     public void enableAndShow()
