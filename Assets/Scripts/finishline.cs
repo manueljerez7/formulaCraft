@@ -14,6 +14,8 @@ public class finishline : MonoBehaviour
 	public GameObject checkB;
 	public GameObject checkC;
 	public GameObject checkS;
+	public GameObject checkD;
+	public GameObject checkE;
 	public GameObject finishln;
 	public Text stopwatch;
 	public TMP_Text wrongdirection;
@@ -35,6 +37,8 @@ public class finishline : MonoBehaviour
 	public int checkpointA=0;
 	public int checkpointB=0;
 	public int checkpointC=0;
+	public int checkpointD=0;
+	public int checkpointE=0;
 	public int checkpointS=0;
 	public int lapcount;
 	public int maxlaps;
@@ -94,12 +98,13 @@ IEnumerator StopWatch()
 
 IEnumerator addlap(string laptime,string playername)
 {
+
 	if (!isTutorial) //we don't send the result to the leaderboards if we're on the tutorial
 	{
 		print("preparing to send result to the leaderboards");
-		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/addlap?laptime=" + laptime +
-		                                          "&playername=" + playername);
-		yield return uwr.SendWebRequest();
+	  Scene scene = SceneManager.GetActiveScene();
+	  UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/addlap?laptime="+laptime+"&playername="+playername+"&track="+scene.name);
+	  yield return uwr.SendWebRequest();
 
 		if (uwr.result == UnityWebRequest.Result.ConnectionError ||
 		    uwr.result == UnityWebRequest.Result.DataProcessingError ||
@@ -138,6 +143,8 @@ void OnCollisionEnter(Collision collision){
 		checkpointB=0;
 		checkpointC=0;
 		checkpointS=0;
+		checkpointD=0;
+		checkpointE=0;
 		lapcount++ ;
 		foreach (var obj in nitros) {
 			obj.SetActive(true);
@@ -174,6 +181,22 @@ void OnCollisionEnter(Collision collision){
 	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 0)
 	        {
 		        var targetdir = (checkC.transform.position - kart.transform.position).normalized;
+		        var currentdir = kart.transform.forward.normalized;
+		        if (Vector3.Dot(targetdir, currentdir) < 0)
+		        {
+			        wrongdirection.text = "Wrong Direction!";
+		        }else{wrongdirection.text="";}
+	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 1 && checkpointD == 0)
+	        {
+		        var targetdir = (checkD.transform.position - kart.transform.position).normalized;
+		        var currentdir = kart.transform.forward.normalized;
+		        if (Vector3.Dot(targetdir, currentdir) < 0)
+		        {
+			        wrongdirection.text = "Wrong Direction!";
+		        }else{wrongdirection.text="";}
+	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 1 && checkpointD == 1 && checkpointE == 0)
+	        {
+		        var targetdir = (checkE.transform.position - kart.transform.position).normalized;
 		        var currentdir = kart.transform.forward.normalized;
 		        if (Vector3.Dot(targetdir, currentdir) < 0)
 		        {

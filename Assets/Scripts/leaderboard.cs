@@ -4,6 +4,7 @@ using System;
 using UnityEngine;
 using UnityEngine.Networking;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class leaderboard : MonoBehaviour
 {
@@ -18,8 +19,9 @@ public class leaderboard : MonoBehaviour
 
 	IEnumerator getleaderboard()
 	{
+		Scene scene = SceneManager.GetActiveScene();
 		string leaderboard="Formula Craft Top 10 Leaderboard\n";
-		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/fastestlaps?limit=10");
+		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/fastestlaps?limit=10&track="+scene.name);
 		yield return uwr.SendWebRequest();
 
 		if (uwr.result == UnityWebRequest.Result.ConnectionError || uwr.result == UnityWebRequest.Result.DataProcessingError || uwr.result == UnityWebRequest.Result.ProtocolError)

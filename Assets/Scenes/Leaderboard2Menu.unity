@@ -308,6 +308,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   leaderboardui: {fileID: 328402954}
+  scenename: 
   leaderboardflag: 0
   backgroundlead: {fileID: 0}
 --- !u!114 &328402954
@@ -538,6 +539,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   leaderboardui: {fileID: 467001961}
   leaderboardflag: 0
+  scenename: DesertRacing
 --- !u!114 &467001961
 MonoBehaviour:
   m_ObjectHideFlags: 0

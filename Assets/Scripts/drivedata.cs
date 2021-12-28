@@ -54,7 +54,8 @@ public class drivedata : MonoBehaviour
         }
 		if (Input.GetKeyUp("r")){
 			if(Time.timeScale == 0){
-				SceneManager.LoadScene("RacingScene");
+				Scene scene = SceneManager.GetActiveScene();
+				SceneManager.LoadScene(scene.name);
 				Time.timeScale = 1;
 			}
 		}

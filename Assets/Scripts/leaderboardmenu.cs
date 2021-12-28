@@ -9,6 +9,7 @@ public class leaderboardmenu : MonoBehaviour
 {
 	public Text leaderboardui;
 	public int leaderboardflag = 0;
+	public string scenename;
 
 	public static string Indent(int count)
 	{
@@ -18,7 +19,7 @@ public class leaderboardmenu : MonoBehaviour
 	IEnumerator getleaderboard()
 	{
 		string leaderboard = "";
-		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/fastestlaps?limit=10");
+		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/fastestlaps?limit=10&track="+scenename);
 		yield return uwr.SendWebRequest();
 
 		if (uwr.result == UnityWebRequest.Result.ConnectionError ||
