@@ -20,6 +20,7 @@ public class InteractionController : MonoBehaviour
     public GameObject[] engineInventory = new GameObject[1];
     public GameObject[] brakeInventory = new GameObject[1];
     public bool inventoryFull = false;
+
     public Text carProperties;
     public float gripGUI = 0f;
     public float acc = 0f;
@@ -27,7 +28,7 @@ public class InteractionController : MonoBehaviour
     public float topSpeedGUI = 0f;
     
     //public engineScript
-	void Start(){
+    void Start(){
 		gui = GameObject.Find("InventoryHud");
         carProperties.text = "Grip: "+gripGUI.ToString()+"\n"+
             "Acceleration: "+acc.ToString()+"\n"+

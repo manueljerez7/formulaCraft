@@ -26,6 +26,15 @@ public class Menu : MonoBehaviour
         backgroundMusicMenu = GameObject.Find("BackgroundMusic");
     }
 
+    public void PlayTutorial(){
+	    name = inputField.GetComponent<InputField>().text; //changed <Text> to <InputField>
+		if(name=="") {
+			name= "Unnamed";
+ 		}
+		PlayerPrefs.SetString("username",name);
+        backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);
+        SceneManager.LoadScene("LootingAreaTutorial");
+    }
 
     public void PlayGame(){
 		name = inputField.GetComponent<InputField>().text;
