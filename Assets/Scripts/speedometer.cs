@@ -17,7 +17,7 @@ public class speedometer : MonoBehaviour
     {
         maxSpeed = PlayerPrefs.GetFloat("topSpeed")+20;
         minSpeedArrowAngle = 13.26f;
-        maxSpeedArrowAngle = (maxSpeed * -151f)/200;
+        maxSpeedArrowAngle = (maxSpeed * -166f)/220;
     }
 
     
