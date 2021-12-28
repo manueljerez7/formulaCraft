@@ -56,7 +56,7 @@ public class finishline : MonoBehaviour
 	loottimeparsed = DateTime.ParseExact(lootingtime,format,null);
 	totaltimeui.text = "Total Time: " + loottimeparsed.ToString("mm:ss:ff");
 	lapcount= 1;
-	if (!isTutorial)
+	if (!isTutorial && SceneManager.GetActiveScene().name != "DesertRacing")
 		maxlaps = 5;
 	else
 		maxlaps = 3;
