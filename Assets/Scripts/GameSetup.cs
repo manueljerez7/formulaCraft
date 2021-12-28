@@ -37,6 +37,11 @@ public class GameSetup : MonoBehaviour
             soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicRacing);
         }
 
+        else if (currentSceneName == "DesertRacing")
+        {
+            soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicRacingEgipt);
+        }
+
         InvokeRepeating("DestroyAllSounds", 10.0f, 10.0f);
     }
 

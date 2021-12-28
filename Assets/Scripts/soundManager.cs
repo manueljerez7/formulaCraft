@@ -32,6 +32,7 @@ public static class soundManager
         TraversePortal,
         BackgroundMusicLootingEgipt,
         BackgroundMusicLootingTutorial,
+        BackgroundMusicRacingEgipt,
     }
 
 
