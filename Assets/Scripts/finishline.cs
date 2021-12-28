@@ -16,6 +16,7 @@ public class finishline : MonoBehaviour
 	public GameObject checkS;
 	public GameObject checkD;
 	public GameObject checkE;
+	public GameObject checkF;
 	public GameObject finishln;
 	public Text stopwatch;
 	public TMP_Text wrongdirection;
@@ -39,6 +40,7 @@ public class finishline : MonoBehaviour
 	public int checkpointC=0;
 	public int checkpointD=0;
 	public int checkpointE=0;
+	public int checkpointF=0;
 	public int checkpointS=0;
 	public int lapcount;
 	public int maxlaps;
@@ -56,10 +58,10 @@ public class finishline : MonoBehaviour
 	loottimeparsed = DateTime.ParseExact(lootingtime,format,null);
 	totaltimeui.text = "Total Time: " + loottimeparsed.ToString("mm:ss:ff");
 	lapcount= 1;
-	if (!isTutorial && SceneManager.GetActiveScene().name != "DesertRacing")
-		maxlaps = 5;
-	else
+	if (isTutorial || SceneManager.GetActiveScene().name != "RacingScene")
 		maxlaps = 3;
+	else
+		maxlaps = 5;
 	lapsui.text = "Lap: " + "/" + maxlaps;
 	gamedone = false;
 	nitros = GameObject.FindGameObjectsWithTag("nitro");
@@ -145,6 +147,7 @@ void OnCollisionEnter(Collision collision){
 		checkpointS=0;
 		checkpointD=0;
 		checkpointE=0;
+		checkpointF=0;
 		lapcount++ ;
 		foreach (var obj in nitros) {
 			obj.SetActive(true);
@@ -197,6 +200,14 @@ void OnCollisionEnter(Collision collision){
 	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 1 && checkpointD == 1 && checkpointE == 0)
 	        {
 		        var targetdir = (checkE.transform.position - kart.transform.position).normalized;
+		        var currentdir = kart.transform.forward.normalized;
+		        if (Vector3.Dot(targetdir, currentdir) < 0)
+		        {
+			        wrongdirection.text = "Wrong Direction!";
+		        }else{wrongdirection.text="";}
+	        }else if (checkpointA == 1 && checkpointB == 1 && checkpointC == 1 && checkpointD == 1 && checkpointE == 1 && checkpointF == 0)
+	        {
+		        var targetdir = (checkF.transform.position - kart.transform.position).normalized;
 		        var currentdir = kart.transform.forward.normalized;
 		        if (Vector3.Dot(targetdir, currentdir) < 0)
 		        {
