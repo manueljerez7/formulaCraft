@@ -33,6 +33,8 @@ public static class soundManager
         BackgroundMusicLootingEgipt,
         BackgroundMusicLootingTutorial,
         BackgroundMusicRacingEgipt,
+        BackgroundMusicLootingCota,
+        BackgroundMusicRacingCota,
     }
 
 

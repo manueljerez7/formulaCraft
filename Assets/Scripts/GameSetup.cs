@@ -42,6 +42,11 @@ public class GameSetup : MonoBehaviour
             soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicRacingEgipt);
         }
 
+        else if (currentSceneName == "Cota")
+        {
+            soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicRacingCota);
+        }
+
         InvokeRepeating("DestroyAllSounds", 10.0f, 10.0f);
     }
 
