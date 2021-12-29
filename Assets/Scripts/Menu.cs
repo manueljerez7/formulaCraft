@@ -56,6 +56,13 @@ public class Menu : MonoBehaviour
         backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);
         SceneManager.LoadScene("LootingArea2");
 	}
+
+    public void PlaySynthwaveRoad()
+    {
+        backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);
+        SceneManager.LoadScene("LootingArea3");
+	}
+
     
     public void QuitGame()
     {
@@ -90,6 +97,11 @@ public class Menu : MonoBehaviour
     public void LeaderboardTwo()
 	{
     	SceneManager.LoadScene("Leaderboard2Menu");		
+	}
+
+    public void LeaderboardThree()
+	{
+    	SceneManager.LoadScene("Leaderboard3Menu");		
 	}
 
     public void SetMasterVolume(float volume)
