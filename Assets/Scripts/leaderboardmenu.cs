@@ -25,6 +25,9 @@ public class leaderboardmenu : MonoBehaviour
 		if(SceneManager.GetActiveScene().name=="Leaderboard2Menu"){
 			scenename="DesertRacing";
 		}
+		if(SceneManager.GetActiveScene().name=="Leaderboard3Menu"){
+			scenename="Cota";
+		}
 		string leaderboard = "";
 		UnityWebRequest uwr = UnityWebRequest.Get("https://formulacraft.herokuapp.com/fastestlaps?limit=10&track="+scenename);
 		yield return uwr.SendWebRequest();

@@ -31,10 +31,15 @@ public class Portal : MonoBehaviour
         //change scene to racing area
         soundManager.PlaySound(soundManager.Sound.TraversePortal);
         if(SceneManager.GetActiveScene().name=="LootingArea"){
-            SceneManager.LoadScene("RacingScene"); //TODO change number 1 for whatever scene number the racing area is
+            SceneManager.LoadScene("RacingScene");
         }
+
         if(SceneManager.GetActiveScene().name=="LootingArea2"){
-            SceneManager.LoadScene("DesertRacing"); //TODO change number 1 for whatever scene number the racing area is
+            SceneManager.LoadScene("DesertRacing"); 
+        }
+
+        if(SceneManager.GetActiveScene().name=="LootingArea3"){
+            SceneManager.LoadScene("Cota"); 
         }
     }
 
