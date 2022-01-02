@@ -46,6 +46,8 @@ public class GameSetup : MonoBehaviour
         {
             soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicRacingCota);
         }
+        else if (currentSceneName == "LootingArea3")
+            soundManager.PlayBackgroundMusic(soundManager.Sound.BackgroundMusicLootingCota);
 
         InvokeRepeating("DestroyAllSounds", 10.0f, 10.0f);
     }
