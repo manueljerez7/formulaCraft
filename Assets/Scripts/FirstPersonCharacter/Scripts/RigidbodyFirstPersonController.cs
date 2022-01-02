@@ -91,6 +91,7 @@ namespace UnityStandardAssets.Characters.FirstPerson
         private bool m_Jump, m_PreviouslyGrounded, m_Jumping, m_IsGrounded;
 
 
+
         public Vector3 Velocity
         {
             get { return m_RigidBody.velocity; }
