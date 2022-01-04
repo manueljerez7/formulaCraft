@@ -45,6 +45,11 @@ public class Menu : MonoBehaviour
         SceneManager.LoadScene("PlayMenu");
     }
 
+    public void PlayCredits()
+    {
+        SceneManager.LoadScene("CreditsMenu");
+	}
+
     public void PlaySnowyCourse()
     {
         backgroundMusicMenu.SendMessage("StopMenuMusic", 0.0f);

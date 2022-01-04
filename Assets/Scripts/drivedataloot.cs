@@ -35,7 +35,7 @@ public class drivedataloot : MonoBehaviour
         {
             if (Time.timeScale == 0)
             {
-                
+                Cursor.visible = false;
                 ResumeGame();
 				backgroundpause.alpha = 0;
                 pausemenu.text = "";
@@ -44,6 +44,7 @@ public class drivedataloot : MonoBehaviour
             else
             {
                 PauseGame();
+                Cursor.visible = false;
 				backgroundpause.alpha = 0.46f;
                 pausemenu.text = "GAME PAUSED\n\nPress ESC to Resume\nPress T to go back to Menu\n"
                 +"Move:WASD\nJump:Space\nRun:Left Shift\nGrab:Left Click";

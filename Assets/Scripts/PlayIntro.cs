@@ -14,7 +14,7 @@ public class PlayIntro : MonoBehaviour
 
     IEnumerator changeScene()
     {
-        yield return new WaitForSeconds(4);
+        yield return new WaitForSeconds(5);
         SceneManager.LoadScene("MainMenu");
     }
 }
