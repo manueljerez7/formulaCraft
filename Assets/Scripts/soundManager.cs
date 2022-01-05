@@ -92,18 +92,6 @@ public static class soundManager
         audioSource.Play();
     }
 
-
-
-    //DO WE NEED IT?
-    private static bool CanPlaySound(Sound sound)
-    {
-        switch (sound)
-        {
-            default:
-                return true;
-        }
-    }
-
     private static AudioClip GetAudioClip(Sound sound)
     {
         foreach (GameAssets.SoundAudioClip soundAudioClip in GameAssets.i.soundAudioClipArray)
